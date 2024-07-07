@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3271518682874901048}
   - component: {fileID: 1246810305322805702}
-  - component: {fileID: 4614931205210986930}
+  - component: {fileID: 6434052054278950779}
+  - component: {fileID: 8443595984993895433}
   m_Layer: 0
   m_Name: ScoreMovement
   m_TagString: Untagged
@@ -69,7 +70,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15
---- !u!114 &4614931205210986930
+--- !u!114 &6434052054278950779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,7 +79,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 570661475041619419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ecf63266ae6cc4486b9e3f4ee24622, type: 3}
+  m_Script: {fileID: 11500000, guid: 111ec3a13d6dbe04ba6af87e63df8b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _centerTranform: {fileID: 4375765077509342100}
@@ -86,6 +87,18 @@ MonoBehaviour:
   - 0.9
   - 1.7
   - 2.45
+--- !u!114 &8443595984993895433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570661475041619419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ac0369778397e478a80659b2d2c711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1957394758985110025
 GameObject:
   m_ObjectHideFlags: 0

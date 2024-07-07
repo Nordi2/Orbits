@@ -1,12 +1,22 @@
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+enum TypeObstacle
 {
-    [SerializeField] private float _rotateSpeed;
-    [SerializeField] private Transform _rotateTransform;
+    Far = 1,
+    Middle = 2,
+    Close = 3,
+}
 
-    private void FixedUpdate()
+namespace MyNamespace
+{
+    public class Obstacle : MonoBehaviour
     {
-        _rotateTransform.Rotate(0, 0, _rotateSpeed * Time.fixedDeltaTime);
+        [SerializeField] private float _rotateSpeed;
+        [SerializeField] private Transform _rotateTransform;
+
+        private void FixedUpdate()
+        {
+            _rotateTransform.Rotate(0, 0, _rotateSpeed * Time.fixedDeltaTime);
+        }
     }
 }

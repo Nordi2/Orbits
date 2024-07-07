@@ -1,6 +1,6 @@
-using System;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace CodeBase.UI.Score
 {
@@ -9,8 +9,16 @@ namespace CodeBase.UI.Score
         [SerializeField] private TextMeshProUGUI _textMeshPro;
         private ScoreWallet _scoreWallet;
 
+        [Inject]
         private void Construct(ScoreWallet scoreWallet) =>
             _scoreWallet = scoreWallet;
+
+        #region MonoBehaviour
+
+        private void Start() =>
+            UpdateCoinView();
+
+        #endregion
 
         private void UpdateCoinView() =>
             _textMeshPro.text = _scoreWallet.Score.ToString();
