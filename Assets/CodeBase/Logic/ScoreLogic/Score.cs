@@ -11,11 +11,11 @@ namespace CodeBase.Logic.ScoreLogic
         [SerializeField] private Transform _centerTranform;
         [SerializeField] private List<float> _spawnPosX;
         private TriggerObserver _triggerObserver;
-       // private ScoreWallet _scoreWallet;
+        private ScoreWallet _scoreWallet;
 
-       // [Inject]
-       // private void Construct(ScoreWallet scoreWallet) =>
-       //     _scoreWallet = scoreWallet;
+        [Inject]
+        private void Construct(ScoreWallet scoreWallet) =>
+            _scoreWallet = scoreWallet;
 
         #region MonoBehaviour
 
