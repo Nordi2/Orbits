@@ -1,16 +1,28 @@
 using CodeBase.Infrastructure.AssetManagment;
 using CodeBase.Infrastructure.Factory;
+using Config.Player;
+using UnityEngine;
 using Zenject;
 
 namespace CodeBase.Installers
 {
     public class ProjectInstaller : MonoInstaller
     {
+        [SerializeField] private PlayerConfig _playerConfig;
         public override void InstallBindings()
         {
+            RegisterPlayerConfig();
             RegisteredAssetProvider();
             RegisterScoreFactory();
         }
+
+        private void RegisterPlayerConfig()
+        {
+            Container
+                .BindInstance(_playerConfig)
+                .AsSingle();
+        }
+
         private void RegisterScoreFactory()
         {
             Container

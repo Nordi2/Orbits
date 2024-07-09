@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   _speed: 120
+  _moveTime: 0.16

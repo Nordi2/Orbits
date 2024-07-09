@@ -96,7 +96,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6248598742585655104}
   - component: {fileID: 1883650023028981436}
-  - component: {fileID: 2220625460571110900}
+  - component: {fileID: 1933500089068507822}
+  - component: {fileID: 6166132455715222842}
+  - component: {fileID: 3994565521066635340}
   m_Layer: 0
   m_Name: ObstacleMovement
   m_TagString: Untagged
@@ -113,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 5488603829384819796}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -155,7 +157,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
---- !u!114 &2220625460571110900
+--- !u!114 &1933500089068507822
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,11 +166,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 5488603829384819796}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25ca88246a435574395f56b97077549a, type: 3}
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotateSpeed: 90
-  _rotateTransform: {fileID: 6686717521272085070}
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 3994565521066635340}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
+--- !u!114 &6166132455715222842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488603829384819796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a87e804d154cd6449965bb13567b22e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3994565521066635340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488603829384819796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e491eb7075eb4b44a4619bb5b01b4f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _obstacleConfig: {fileID: 11400000, guid: 994eaa3f4e40d924ab966d3957db3183, type: 2}
 --- !u!1 &5932191356792257055
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,8 +293,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6686717521272085070}
+  - component: {fileID: 8946618471070251518}
   m_Layer: 0
-  m_Name: Obstacle
+  m_Name: Obstacle_Middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,6 +317,18 @@ Transform:
   - {fileID: 6248598742585655104}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8946618471070251518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7607960993943832882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0106904a4e40fed4a9cdc4c6700c3e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8813368564704196862
 GameObject:
   m_ObjectHideFlags: 0

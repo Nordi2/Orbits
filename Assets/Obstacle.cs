@@ -1,12 +1,5 @@
 using UnityEngine;
 
-enum TypeObstacle
-{
-    Far = 1,
-    Middle = 2,
-    Close = 3,
-}
-
 namespace MyNamespace
 {
     public class Obstacle : MonoBehaviour

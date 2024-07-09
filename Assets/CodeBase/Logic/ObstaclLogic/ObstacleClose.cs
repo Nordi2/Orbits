@@ -3,7 +3,7 @@ using Zenject;
 
 namespace CodeBase.Logic.ObstaclLogic
 {
-    public class ObstacleFar : Obstacle
+    public class ObstacleClose : Obstacle
     {
         private ObstacleConfig _obstacleConfig;
         private ObstacleFacade _obstacleFacade;
@@ -11,13 +11,10 @@ namespace CodeBase.Logic.ObstaclLogic
         [Inject]
         private void Construct(ObstacleConfig obstacleConfig) =>
             _obstacleConfig = obstacleConfig;
-
         private void Start() =>
             _obstacleFacade = transform.GetComponentInParent<ObstacleFacade>();
 
-        private void FixedUpdate()
-        {
+        private void FixedUpdate() =>
             base.FixedUpdate(_obstacleFacade.transform, _obstacleConfig.Speed);
-        }
     }
 }
