@@ -4,9 +4,9 @@ namespace CodeBase.Logic.ScoreLogic
 {
     public class ScoreSpawner : ITickable
     {
-        private readonly Score.Factory _scoreFactory;
+        private readonly Factory _scoreFactory;
 
-        public ScoreSpawner(Score.Factory scoreFactory)
+        public ScoreSpawner(Factory scoreFactory)
         {
             _scoreFactory = scoreFactory;
         }

@@ -45,8 +45,5 @@ namespace CodeBase.Logic.ScoreLogic
         private Vector3 GetSpawnPosition() =>
             Vector3.right * _spawnPosX[Random.Range(0, _spawnPosX.Count)];
 
-        public class Factory : PlaceholderFactory<Score>
-        {
-        }
     }
 }

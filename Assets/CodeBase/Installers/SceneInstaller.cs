@@ -16,11 +16,9 @@ namespace CodeBase.Installers
         public override void InstallBindings()
         {
             RegisterInput();
-            //RegisterScoreFactory();
             RegisterWallet();
-            // CreateScore();
             Container.BindInterfacesTo<ScoreSpawner>().AsSingle();
-            Container.BindFactory<Score, Score.Factory>().FromComponentInNewPrefab(ScorePrefab);
+            Container.BindFactory<Score, Factory>().FromComponentInNewPrefab(ScorePrefab);
         }
 
         private void RegisterInput()
@@ -30,20 +28,6 @@ namespace CodeBase.Installers
                 .To<InputService>()
                 .AsSingle();
         }
-
-        // private void CreateScore()
-        // {
-        //    GameObject score = _scoreFactory.CreateScore(_scoreSpawnPoint.position);
-        //    Container.BindInstance(score);
-        // }
-
-        /* private void RegisterScoreFactory()
-         {
-             Container
-                 .Bind<IScoreFactory>()
-                 .To<ScoreFactory>()
-                 .AsSingle();
-         }*/
 
         private void RegisterWallet()
         {
