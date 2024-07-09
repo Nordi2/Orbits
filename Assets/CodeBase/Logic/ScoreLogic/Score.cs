@@ -38,11 +38,15 @@ namespace CodeBase.Logic.ScoreLogic
 
         private void TriggerEnter()
         {
-            //_scoreWallet.AddScore();
+            _scoreWallet.AddScore();
             Destroy(_centerTranform.gameObject);
         }
 
         private Vector3 GetSpawnPosition() =>
             Vector3.right * _spawnPosX[Random.Range(0, _spawnPosX.Count)];
+
+        public class Factory : PlaceholderFactory<Score>
+        {
+        }
     }
 }

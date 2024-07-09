@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using CodeBase.Infrastructure.Service;
 using UnityEngine;
+using Zenject;
 
 public class Player : MonoBehaviour
 {
@@ -12,7 +14,14 @@ public class Player : MonoBehaviour
     private float currentRadius;
     [SerializeField] private float _rotateSpeed;
     [SerializeField] private Transform _rotateTransform;
+    private IInputService _inputService;
     private int level;
+    
+    [Inject]
+    private void Construct(IInputService inputService)
+    {
+        _inputService = inputService;
+    }
 
     private void Awake()
     {
@@ -28,12 +37,14 @@ public class Player : MonoBehaviour
             StartCoroutine(ChangeRadius());
         }
     }
+
     private void FixedUpdate()
     {
         transform.localPosition = Vector3.up * currentRadius;
         float rotateValue = _rotateSpeed * Time.fixedDeltaTime * _startRadius / currentRadius;
         _rotateTransform.Rotate(0, 0, rotateValue);
     }
+
     private IEnumerator ChangeRadius()
     {
         canClick = false;

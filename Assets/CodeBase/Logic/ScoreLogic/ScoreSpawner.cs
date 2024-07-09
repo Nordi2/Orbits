@@ -1,21 +1,19 @@
-using UnityEngine;
 using Zenject;
 
 namespace CodeBase.Logic.ScoreLogic
 {
-    public class ScoreSpawner : MonoBehaviour
+    public class ScoreSpawner : ITickable
     {
-        [Inject] private GameObject _score;
+        private readonly Score.Factory _scoreFactory;
 
-        [SerializeField] private GameObject Score;
-
-        private void Awake()
+        public ScoreSpawner(Score.Factory scoreFactory)
         {
-            Score = _score;
+            _scoreFactory = scoreFactory;
         }
 
-        private void SpawnScore()
+        public void Tick()
         {
+            var score = _scoreFactory.Create();
         }
     }
 }
