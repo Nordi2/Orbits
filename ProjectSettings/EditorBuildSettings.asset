@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GamePlayCircle.unity
     guid: eb620f5e2e65499428b4c369a6db13df
+  - enabled: 1
+    path: Assets/Scenes/GamePlaySquare.unity
+    guid: 76bcae16f9688e7459be0105c45fcd27
+  - enabled: 1
+    path: Assets/Scenes/GamePlayTriangle.unity
+    guid: 4565d827b13ca2547ac9c1e23e0153bf
   m_configObjects: {}
