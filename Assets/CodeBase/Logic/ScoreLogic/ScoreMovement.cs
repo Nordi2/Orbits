@@ -39,11 +39,11 @@ namespace CodeBase.Logic.ScoreLogic
         private void TriggerEnter()
         {
             _scoreWallet.AddScore();
+            ScoreSpawner.Instace.SpawnScore();
             Destroy(_centerTranform.gameObject);
         }
 
         private Vector3 GetSpawnPosition() =>
             Vector3.right * _spawnPosX[Random.Range(0, _spawnPosX.Count)];
-
     }
 }
