@@ -1845,8 +1845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 357773682660f694480ca0cc65248203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreSpawnPoint: {fileID: 0}
-  ScorePrefab: {fileID: 1957394758985110025, guid: e03573fad53fff146921737531fc46c7, type: 3}
+  ScorePrefab: {fileID: -4016599149343634180, guid: e03573fad53fff146921737531fc46c7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -11,6 +11,9 @@ namespace CodeBase.Logic.ScoreLogic
             _scoreFactory = scoreFactory;
         }
 
+        public void SpawnScore() =>
+            _scoreFactory.Create();
+
         public void Tick()
         {
             var score = _scoreFactory.Create();

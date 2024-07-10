@@ -10,15 +10,14 @@ namespace CodeBase.Installers
     public class SceneInstaller : MonoInstaller
     {
         [Inject] private IScoreFactory _scoreFactory;
-        [SerializeField] private Transform _scoreSpawnPoint;
-        public GameObject ScorePrefab;
+        public ScoreFacade ScorePrefab;
 
         public override void InstallBindings()
         {
             RegisterInput();
             RegisterWallet();
             Container.BindInterfacesTo<ScoreSpawner>().AsSingle();
-            Container.BindFactory<Score, Factory>().FromComponentInNewPrefab(ScorePrefab);
+            Container.BindFactory<ScoreMovement, Factory>().FromComponentInNewPrefab(ScorePrefab);
         }
 
         private void RegisterInput()

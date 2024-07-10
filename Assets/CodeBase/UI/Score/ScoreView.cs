@@ -18,6 +18,12 @@ namespace CodeBase.UI.Score
         private void Start() =>
             UpdateCoinView();
 
+        private void OnEnable() =>
+            _scoreWallet.AddScoreEvent += UpdateCoinView;
+
+        private void OnDisable() =>
+            _scoreWallet.AddScoreEvent -= UpdateCoinView;
+
         #endregion
 
         private void UpdateCoinView() =>

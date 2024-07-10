@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace CodeBase.Logic.ScoreLogic
 {
-    public class Score : MonoBehaviour
+    public class ScoreMovement : MonoBehaviour
     {
         [SerializeField] private Transform _centerTranform;
         [SerializeField] private List<float> _spawnPosX;
