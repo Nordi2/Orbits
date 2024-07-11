@@ -2,7 +2,6 @@ using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Service;
 using CodeBase.Logic.ScoreLogic;
 using CodeBase.UI.Score;
-using UnityEngine;
 using Zenject;
 
 namespace CodeBase.Installers
@@ -25,6 +24,7 @@ namespace CodeBase.Installers
             Container
                 .Bind<IInputService>()
                 .To<InputService>()
+                .FromComponentInHierarchy()
                 .AsSingle();
         }
 

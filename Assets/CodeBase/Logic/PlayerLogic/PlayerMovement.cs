@@ -47,7 +47,7 @@ namespace CodeBase.Logic.PlayerLogic
 
         private void Update()
         {
-            if (canClick && Input.GetMouseButtonDown(0))
+            if (canClick && /*_inputService.СlickMouseButton*/ Input.GetMouseButtonDown(0))
             {
                 StartCoroutine(ChangeRadius());
             }
@@ -65,10 +65,10 @@ namespace CodeBase.Logic.PlayerLogic
         private IEnumerator ChangeRadius()
         {
             canClick = false;
-            float moveStartRadius = _rotateRadius[level];
-            float moveEndRadius = _rotateRadius[(level + 1) % _rotateRadius.Count];
-            float moveOffset = moveEndRadius - moveStartRadius;
-            float speed = 1 / _moveTime;
+            float moveStartRadius = _rotateRadius[level]; //0.95
+            float moveEndRadius = _rotateRadius[(level + 1) % _rotateRadius.Count]; //1.7 % 4
+            float moveOffset = moveEndRadius - moveStartRadius; //1.7-0.95
+            float speed = 1 / _moveTime; //1/0.16
             float timeElasped = 0f;
             while (timeElasped < 1f)
             {
