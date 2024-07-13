@@ -1,4 +1,4 @@
-using CodeBase.Configs;
+using CodeBase.Configs.Obstacle;
 using UnityEngine;
 using Zenject;
 

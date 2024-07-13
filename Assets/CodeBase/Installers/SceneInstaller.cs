@@ -1,7 +1,5 @@
 using CodeBase.Infrastructure.Factory;
-using CodeBase.Infrastructure.Service;
 using CodeBase.Logic.ScoreLogic;
-using CodeBase.UI.Score;
 using Zenject;
 
 namespace CodeBase.Installers
@@ -13,26 +11,24 @@ namespace CodeBase.Installers
 
         public override void InstallBindings()
         {
-            RegisterInput();
-            RegisterWallet();
-            Container.BindInterfacesTo<ScoreSpawner>().AsSingle();
-            Container.BindFactory<Score, Factory>().FromComponentInNewPrefab(ScorePrefab);
+            RegisterSpawner();
+            RegisterFactory();
         }
 
-        private void RegisterInput()
+        
+
+        private void RegisterFactory()
         {
             Container
-                .Bind<IInputService>()
-                .To<InputService>()
-                .FromComponentInHierarchy()
-                .AsSingle();
+                .BindFactory<Score, Factory>()
+                .FromComponentInNewPrefab(ScorePrefab);
         }
 
-        private void RegisterWallet()
+        private void RegisterSpawner()
         {
             Container
-                .Bind<ScoreWallet>()
-                .AsSingle();
+                .BindInterfacesTo<ScoreSpawner>()
+                .AsCached();
         }
     }
 }

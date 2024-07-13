@@ -1,4 +1,5 @@
 using CodeBase.Configs;
+using CodeBase.Configs.Player;
 using CodeBase.Infrastructure.AssetManagment;
 using CodeBase.Infrastructure.Factory;
 using UnityEngine;

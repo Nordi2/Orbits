@@ -1,25 +1,21 @@
 using System;
+using JetBrains.Annotations;
 using UnityEngine;
+using Zenject;
 
 namespace CodeBase.Infrastructure.Service
 {
-    public class InputService : MonoBehaviour, IInputService
+    [UsedImplicitly]
+    public class InputService : ITickable, IInputService
     {
         public event Action OnClickMouseButton;
-        public bool СlickMouseButton { get; private set; }
 
-        private void Update()
+        public void Tick()
         {
             if (Input.GetMouseButtonDown(0))
             {
-                СlickMouseButton = true;
+                OnClickMouseButton?.Invoke();
             }
         }
-    }
-
-    public interface IInputService
-    {
-        event Action OnClickMouseButton;
-        bool СlickMouseButton { get; }
     }
 }

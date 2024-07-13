@@ -1,13 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using CodeBase.Configs;
+using CodeBase.Configs.Player;
 using CodeBase.Infrastructure.Service;
 using UnityEngine;
 using Zenject;
 
 namespace CodeBase.Logic.PlayerLogic
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour , IPause
     {
         [SerializeField] private float _startRadius;
         [SerializeField] private List<float> _rotateRadius;
@@ -38,18 +40,16 @@ namespace CodeBase.Logic.PlayerLogic
             currentRadius = _startRadius;
         }
 
+        private void OnEnable() =>
+            _inputService.OnClickMouseButton += ClickMouseButton;
+
+        private void OnDisable() =>
+            _inputService.OnClickMouseButton -= ClickMouseButton;
+
         private void Start()
         {
             _moveTime = _playerConfig.MoveTime;
             _rotateSpeed = _playerConfig.Speed;
-        }
-
-        private void Update()
-        {
-            if (changeRadiusCoroutine == null && /*_inputService.СlickMouseButton*/ Input.GetMouseButtonDown(0))
-            {
-                changeRadiusCoroutine = StartCoroutine(ChangeRadius());
-            }
         }
 
         private void FixedUpdate()
@@ -60,6 +60,9 @@ namespace CodeBase.Logic.PlayerLogic
         }
 
         #endregion
+
+        private void ClickMouseButton() =>
+            changeRadiusCoroutine ??= StartCoroutine(ChangeRadius());
 
         private IEnumerator ChangeRadius()
         {

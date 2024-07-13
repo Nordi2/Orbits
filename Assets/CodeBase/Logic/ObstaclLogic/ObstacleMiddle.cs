@@ -1,9 +1,9 @@
-using CodeBase.Configs;
+using CodeBase.Configs.Obstacle;
 using Zenject;
 
 namespace CodeBase.Logic.ObstaclLogic
 {
-    public class ObstacleMiddle : Obstacle
+    public class ObstacleMiddle : Obstacle, IPause
     {
         private ObstacleConfig _obstacleConfig;
         private ObstacleFacade _obstacleFacade;

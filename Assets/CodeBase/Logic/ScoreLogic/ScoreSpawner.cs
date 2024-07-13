@@ -5,7 +5,7 @@ using Zenject;
 namespace CodeBase.Logic.ScoreLogic
 {
     [UsedImplicitly]
-    public class ScoreSpawner : IInitializable, IDisposable
+    public class ScoreSpawner : IInitializable, IDisposable , IPause
     {
         private readonly Factory _scoreFactory;
         private Score _currentScore;

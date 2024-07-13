@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CodeBase.Configs
+namespace CodeBase.Configs.Player
 {
     [CreateAssetMenu(fileName = "Player", menuName = "ScritableObjects/PlayerConfig", order = 1)]
     public class PlayerConfig : ScriptableObject
