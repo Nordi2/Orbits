@@ -16,7 +16,7 @@ namespace CodeBase.Installers
             RegisterInput();
             RegisterWallet();
             Container.BindInterfacesTo<ScoreSpawner>().AsSingle();
-            Container.BindFactory<ScoreMovement, Factory>().FromComponentInNewPrefab(ScorePrefab);
+            Container.BindFactory<Score, Factory>().FromComponentInNewPrefab(ScorePrefab);
         }
 
         private void RegisterInput()

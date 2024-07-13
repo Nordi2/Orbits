@@ -1,4 +1,4 @@
-using Config.Obstacles;
+using CodeBase.Configs;
 using Zenject;
 
 namespace CodeBase.Logic.ObstaclLogic

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using CodeBase.Configs;
 using CodeBase.Infrastructure.Service;
-using Config.Player;
 using UnityEngine;
 using Zenject;
 
@@ -16,11 +16,11 @@ namespace CodeBase.Logic.PlayerLogic
         private IInputService _inputService;
         private PlayerConfig _playerConfig;
 
-        private bool canClick;
         private int level;
         private float _rotateSpeed;
         private float currentRadius;
         private float _moveTime;
+        private Coroutine changeRadiusCoroutine;
 
 
         [Inject]
@@ -34,7 +34,6 @@ namespace CodeBase.Logic.PlayerLogic
 
         private void Awake()
         {
-            canClick = true;
             level = 0;
             currentRadius = _startRadius;
         }
@@ -47,9 +46,9 @@ namespace CodeBase.Logic.PlayerLogic
 
         private void Update()
         {
-            if (canClick && /*_inputService.СlickMouseButton*/ Input.GetMouseButtonDown(0))
+            if (changeRadiusCoroutine == null && /*_inputService.СlickMouseButton*/ Input.GetMouseButtonDown(0))
             {
-                StartCoroutine(ChangeRadius());
+                changeRadiusCoroutine = StartCoroutine(ChangeRadius());
             }
         }
 
@@ -64,7 +63,6 @@ namespace CodeBase.Logic.PlayerLogic
 
         private IEnumerator ChangeRadius()
         {
-            canClick = false;
             float moveStartRadius = _rotateRadius[level]; //0.95
             float moveEndRadius = _rotateRadius[(level + 1) % _rotateRadius.Count]; //1.7 % 4
             float moveOffset = moveEndRadius - moveStartRadius; //1.7-0.95
@@ -77,9 +75,10 @@ namespace CodeBase.Logic.PlayerLogic
                 yield return new WaitForFixedUpdate();
             }
 
-            canClick = true;
             level = (level + 1) % _rotateRadius.Count;
             currentRadius = _rotateRadius[level];
+
+            changeRadiusCoroutine = null;
         }
     }
 }

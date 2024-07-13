@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using CodeBase.UI.Score;
 using UnityEngine;
@@ -6,12 +7,13 @@ using Random = UnityEngine.Random;
 
 namespace CodeBase.Logic.ScoreLogic
 {
-    public class ScoreMovement : MonoBehaviour
+    public class Score : MonoBehaviour
     {
         [SerializeField] private Transform _centerTranform;
         [SerializeField] private List<float> _spawnPosX;
         private TriggerObserver _triggerObserver;
         private ScoreWallet _scoreWallet;
+        public event Action OnScoreCollected;
 
         [Inject]
         private void Construct(ScoreWallet scoreWallet) =>
@@ -28,8 +30,10 @@ namespace CodeBase.Logic.ScoreLogic
             _centerTranform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 37) * 10f);
         }
 
-        private void OnEnable() =>
+        private void OnEnable()
+        {
             _triggerObserver.TriggerEnter += TriggerEnter;
+        }
 
         private void OnDisable() =>
             _triggerObserver.TriggerEnter -= TriggerEnter;
@@ -39,7 +43,7 @@ namespace CodeBase.Logic.ScoreLogic
         private void TriggerEnter()
         {
             _scoreWallet.AddScore();
-            ScoreSpawner.Instace.SpawnScore();
+            OnScoreCollected?.Invoke();
             Destroy(_centerTranform.gameObject);
         }
 

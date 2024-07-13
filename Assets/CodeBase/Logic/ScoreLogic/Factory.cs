@@ -2,7 +2,7 @@
 
 namespace CodeBase.Logic.ScoreLogic
 {
-    public class Factory : PlaceholderFactory<ScoreMovement>
+    public class Factory : PlaceholderFactory<Score>
     {
     }
 }

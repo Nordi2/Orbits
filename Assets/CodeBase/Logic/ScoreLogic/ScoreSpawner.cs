@@ -1,36 +1,40 @@
+using System;
+using JetBrains.Annotations;
 using Zenject;
 
 namespace CodeBase.Logic.ScoreLogic
 {
-    // Переделать сингелтон , хочу сделать спавн монет , после того , кок подобрал последнию , через сигналы пытался.
-    public class ScoreSpawner : ITickable, IInitializable
+    [UsedImplicitly]
+    public class ScoreSpawner : IInitializable, IDisposable
     {
-        public static ScoreSpawner Instace;
         private readonly Factory _scoreFactory;
+        private Score _currentScore;
 
-        public ScoreSpawner(Factory scoreFactory) =>
+        public ScoreSpawner(Factory scoreFactory)
+        {
             _scoreFactory = scoreFactory;
-
-        public void SpawnScore()
-        {
-            var score = _scoreFactory.Create();
         }
 
-        public void Tick()
-        {
-            /*   if (!_spawn)
-               {
-                   var score = _scoreFactory.Create();
-                   _spawn = true;
-               }*/
-        }
+        public void Initialize() =>
+            SpawnScore();
 
-        public void Initialize()
+        public void Dispose()
         {
-            if (Instace == null)
+            if (_currentScore != null)
             {
-                Instace = this;
+                _currentScore.OnScoreCollected -= ScoreCollected;
             }
+        }
+
+        private void SpawnScore()
+        {
+            _currentScore = _scoreFactory.Create();
+            _currentScore.OnScoreCollected += ScoreCollected;
+        }
+
+        private void ScoreCollected()
+        {
+            _currentScore.OnScoreCollected -= ScoreCollected;
             SpawnScore();
         }
     }

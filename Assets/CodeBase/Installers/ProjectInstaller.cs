@@ -1,6 +1,6 @@
+using CodeBase.Configs;
 using CodeBase.Infrastructure.AssetManagment;
 using CodeBase.Infrastructure.Factory;
-using Config.Player;
 using UnityEngine;
 using Zenject;
 
