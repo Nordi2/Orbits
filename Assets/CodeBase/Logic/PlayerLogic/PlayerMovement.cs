@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using CodeBase.Configs;
 using CodeBase.Configs.Player;
 using CodeBase.Infrastructure.Service;
 using UnityEngine;
@@ -9,7 +7,7 @@ using Zenject;
 
 namespace CodeBase.Logic.PlayerLogic
 {
-    public class PlayerMovement : MonoBehaviour , IPause
+    public class PlayerMovement : MonoBehaviour, IPauseAction
     {
         [SerializeField] private float _startRadius;
         [SerializeField] private List<float> _rotateRadius;
@@ -61,15 +59,27 @@ namespace CodeBase.Logic.PlayerLogic
 
         #endregion
 
+        #region Public Method
+
+        public void StopAction() =>
+            enabled = false;
+
+        public void StartAction() =>
+            enabled = true;
+
+        #endregion
+
+        #region Private Method
+
         private void ClickMouseButton() =>
             changeRadiusCoroutine ??= StartCoroutine(ChangeRadius());
 
         private IEnumerator ChangeRadius()
         {
-            float moveStartRadius = _rotateRadius[level]; //0.95
-            float moveEndRadius = _rotateRadius[(level + 1) % _rotateRadius.Count]; //1.7 % 4
-            float moveOffset = moveEndRadius - moveStartRadius; //1.7-0.95
-            float speed = 1 / _moveTime; //1/0.16
+            float moveStartRadius = _rotateRadius[level];
+            float moveEndRadius = _rotateRadius[(level + 1) % _rotateRadius.Count];
+            float moveOffset = moveEndRadius - moveStartRadius;
+            float speed = 1 / _moveTime;
             float timeElasped = 0f;
             while (timeElasped < 1f)
             {
@@ -83,5 +93,7 @@ namespace CodeBase.Logic.PlayerLogic
 
             changeRadiusCoroutine = null;
         }
+
+        #endregion
     }
 }

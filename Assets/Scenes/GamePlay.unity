@@ -888,6 +888,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1007608948}
+  - component: {fileID: 1007608949}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -911,6 +912,18 @@ Transform:
   - {fileID: 1095352532}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1007608949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007608947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14d8d65edca630479d675c1311fe645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1063679180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,6 +1022,7 @@ GameObject:
   - component: {fileID: 1095352536}
   - component: {fileID: 1095352537}
   - component: {fileID: 1095352538}
+  - component: {fileID: 1095352539}
   m_Layer: 0
   m_Name: PlayerMovement
   m_TagString: Untagged
@@ -1025,7 +1039,7 @@ Transform:
   m_GameObject: {fileID: 1095352531}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.45, z: 0}
+  m_LocalPosition: {x: 0, y: 0.95000005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1088,7 +1102,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1144,6 +1158,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerConfig: {fileID: 11400000, guid: addfde1043d5cbd45a018d07c7ae9359, type: 2}
+--- !u!114 &1095352539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095352531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3372247a34840c79be82ec0cd045d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1105807807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,6 +1506,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6686717521272085070, guid: d18aa68aae4e62145890bc0909ceb444, type: 3}
   m_PrefabInstance: {fileID: 1363310301}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1363310303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8946618471070251518, guid: d18aa68aae4e62145890bc0909ceb444, type: 3}
+  m_PrefabInstance: {fileID: 1363310301}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0106904a4e40fed4a9cdc4c6700c3e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1671226847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1990,6 +2027,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1967586187 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4762840450750027749, guid: 792091df7679def4e8a132fb0656508f, type: 3}
+  m_PrefabInstance: {fileID: 366036913}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0106904a4e40fed4a9cdc4c6700c3e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2016604070 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1440981548012575866, guid: a0f73c7f8055b7d44811a527d02d41ff, type: 3}
+  m_PrefabInstance: {fileID: 1355380548}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0106904a4e40fed4a9cdc4c6700c3e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2033012521
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,6 +2128,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScorePrefab: {fileID: -4016599149343634180, guid: e03573fad53fff146921737531fc46c7, type: 3}
+  _obstacleFar: {fileID: 1967586187}
+  _obstacleMiddle: {fileID: 1363310303}
+  _obstacleClose: {fileID: 2016604070}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

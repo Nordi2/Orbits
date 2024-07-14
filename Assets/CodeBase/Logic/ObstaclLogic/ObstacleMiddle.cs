@@ -3,7 +3,7 @@ using Zenject;
 
 namespace CodeBase.Logic.ObstaclLogic
 {
-    public class ObstacleMiddle : Obstacle, IPause
+    public class ObstacleMiddle : Obstacle
     {
         private ObstacleConfig _obstacleConfig;
         private ObstacleFacade _obstacleFacade;

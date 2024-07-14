@@ -1,10 +1,9 @@
-using CodeBase.Configs;
 using CodeBase.Configs.Obstacle;
 using Zenject;
 
 namespace CodeBase.Logic.ObstaclLogic
 {
-    public class ObstacleClose : Obstacle , IPause
+    public class ObstacleClose : Obstacle
     {
         private ObstacleConfig _obstacleConfig;
         private ObstacleFacade _obstacleFacade;
@@ -12,6 +11,7 @@ namespace CodeBase.Logic.ObstaclLogic
         [Inject]
         private void Construct(ObstacleConfig obstacleConfig) =>
             _obstacleConfig = obstacleConfig;
+
         private void Start() =>
             _obstacleFacade = transform.GetComponentInParent<ObstacleFacade>();
 

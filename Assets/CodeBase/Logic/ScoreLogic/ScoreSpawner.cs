@@ -5,19 +5,16 @@ using Zenject;
 namespace CodeBase.Logic.ScoreLogic
 {
     [UsedImplicitly]
-    public class ScoreSpawner : IInitializable, IDisposable , IPause
+    public class ScoreSpawner : IDisposable, IPauseAction
     {
         private readonly Factory _scoreFactory;
         private Score _currentScore;
+        private bool _isPause;
 
         public ScoreSpawner(Factory scoreFactory)
         {
             _scoreFactory = scoreFactory;
         }
-
-        public void Initialize() =>
-            SpawnScore();
-
         public void Dispose()
         {
             if (_currentScore != null)
@@ -28,13 +25,25 @@ namespace CodeBase.Logic.ScoreLogic
 
         private void SpawnScore()
         {
-            _currentScore = _scoreFactory.Create();
-            _currentScore.OnScoreCollected += ScoreCollected;
+            if (!_isPause)
+            {
+                _currentScore = _scoreFactory.Create();
+                _currentScore.OnScoreCollected += ScoreCollected;
+            }
         }
 
         private void ScoreCollected()
         {
             _currentScore.OnScoreCollected -= ScoreCollected;
+            SpawnScore();
+        }
+
+        public void StopAction() =>
+            _isPause = true;
+
+        public void StartAction()
+        {
+            _isPause = false;
             SpawnScore();
         }
     }

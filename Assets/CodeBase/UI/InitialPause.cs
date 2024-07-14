@@ -1,22 +1,36 @@
+using System;
+using CodeBase.Infrastructure.Service;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace CodeBase.UI
 {
-    public class PauseMenu : MonoBehaviour
+    public class PauseMenuText : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _text;
+        
+        private Tween _tween;
+        private IInputService _inputService;
+        [Inject]
+        public void Construct(IInputService inputService) =>
+            _inputService = inputService;
 
-        private void Start() {}
-           // PlayPause();
+        private void Start() =>
+            _tween = _text.DOFade(0, 1).SetLoops(-1, LoopType.Yoyo);
 
-        private void PlayPause() =>
-            Time.timeScale = 0;
+        private void OnEnable() =>
+            _inputService.OnClickFirsrMouseButton += StopAnimation;
 
-        private void ResumeGame()
+        private void OnDisable() =>
+            _inputService.OnClickFirsrMouseButton -= StopAnimation;
+
+        private void StopAnimation()
         {
-            Time.timeScale = 1;
+            _tween.Kill();
             _text.gameObject.SetActive(false);
+            _inputService.OnClickFirsrMouseButton -= StopAnimation;
         }
     }
 }
