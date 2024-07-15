@@ -14,6 +14,22 @@ namespace CodeBase.Configs.Installer
             RegisterStopAction();
             RegisterInput();
             RegisterWallet();
+            RegisterSaveScore();
+            RegisterLoadMainMenu();
+        }
+
+        private void RegisterLoadMainMenu()
+        {
+            Container
+                .BindInterfacesTo<LoadMainMenu>()
+                .AsCached();
+        }
+
+        private void RegisterSaveScore()
+        {
+            Container
+                .BindInterfacesTo<SaveScore>()
+                .AsCached();
         }
 
         private void RegisterStopAction()
@@ -27,7 +43,7 @@ namespace CodeBase.Configs.Installer
         {
             Container
                 .BindInterfacesTo<InputService>()
-                .AsCached();
+                .AsSingle();
         }
 
         private void RegisterWallet()

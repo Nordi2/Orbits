@@ -7,12 +7,11 @@ namespace CodeBase.UI.MainMenu
 {
     public class LoadScreen : MonoBehaviour
     {
-        public LoadingScreen LoadingScreen;
-        public Slider scale;
+        [SerializeField] private Slider _scale;
 
         public void Loading(string sceneName)
         {
-            LoadingScreen.gameObject.SetActive(true);
+            gameObject.SetActive(true);
             StartCoroutine(LoadAsync(sceneName));
         }
 
@@ -23,7 +22,7 @@ namespace CodeBase.UI.MainMenu
 
             while (!loadAsync.isDone)
             {
-                scale.value = loadAsync.progress;
+                _scale.value = loadAsync.progress;
 
                 if (loadAsync.progress >= 0.9f && !loadAsync.allowSceneActivation)
                 {

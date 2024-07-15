@@ -1,7 +1,9 @@
 using System;
+using JetBrains.Annotations;
 
 namespace CodeBase.UI.Score
 {
+    [UsedImplicitly]
     public class ScoreWallet
     {
         private int _score;

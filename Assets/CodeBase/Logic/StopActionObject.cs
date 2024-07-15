@@ -11,10 +11,10 @@ namespace CodeBase.Logic
     [UsedImplicitly]
     public class StopActionObject : IInitializable, IDisposable
     {
-        private IPlayerFacade _playerMovement;
-        private IInputService _inputService;
-        private ScoreSpawner _scoreSpawner;
-        private IObstacleFacade[] _obstacles;
+        private readonly IPlayerFacade _playerMovement;
+        private readonly IInputService _inputService;
+        private readonly ScoreSpawner _scoreSpawner;
+        private readonly IObstacleFacade[] _obstacles;
 
         public StopActionObject(
             IObstacleFacade[] obstacles,

@@ -1,4 +1,3 @@
-using CodeBase.Infrastructure.Factory;
 using CodeBase.Logic;
 using CodeBase.Logic.ObstaclLogic;
 using CodeBase.Logic.PlayerLogic;
@@ -10,7 +9,6 @@ namespace CodeBase.Installers
 {
     public class SceneInstaller : MonoInstaller
     {
-        [Inject] private IScoreFactory _scoreFactory;
         public ScoreFacade ScorePrefab;
 
         [SerializeField] private ObstacleFacade _obstacleFar;
