@@ -1,38 +1,39 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using CodeBase.Logic.PlayerLogic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace CodeBase.Logic
 {
-    public class LoadMainMenu : IInitializable, IDisposable
+    [UsedImplicitly]
+    public class LoadMainMenu : MonoBehaviour
     {
-        private float _timeExpectation;
-        private readonly IPlayerFacade _playerFacade;
+        [SerializeField] private float _timeExpectation;
+        private IPlayerFacade _playerFacade;
 
-        public LoadMainMenu(IPlayerFacade playerFacade)
+        [Inject]
+        public void Construct(IPlayerFacade playerFacade)
         {
             _playerFacade = playerFacade;
         }
 
-        public void Initialize() =>
+        private void OnEnable() =>
             _playerFacade.DiePlayer += LoadMenu;
 
-        public void Dispose() =>
+        private void OnDisable() =>
             _playerFacade.DiePlayer -= LoadMenu;
 
         private void LoadMenu()
         {
-            SceneManager.LoadScene("MainMenu");
-            //StartCoroutine(Load("MainMenu", _timeExpectation));
+            StartCoroutine(Load("MainMenu", _timeExpectation));
         }
 
-        private IEnumerator Load(string name, float time)
+        private IEnumerator Load(string nameScene, float time)
         {
             yield return new WaitForSeconds(time);
-            SceneManager.LoadScene(name);
+            SceneManager.LoadScene(nameScene);
         }
     }
 }

@@ -13,7 +13,6 @@ namespace CodeBase.Installers
         [SerializeField] private ObstacleFacade _obstacleFar;
         [SerializeField] private ObstacleFacade _obstacleMiddle;
         [SerializeField] private ObstacleFacade _obstacleClose;
-
         public override void InstallBindings()
         {
             RegisterObstacle<IObstacleFacade>(_obstacleClose);
@@ -22,7 +21,15 @@ namespace CodeBase.Installers
             RegisterPlayer<IPlayerFacade, PlayerFacade>();
             RegisterSpawner();
             RegisterFactory();
+            RegisterEffectPool();
         }
+
+        private void RegisterEffectPool() =>
+            Container
+                .Bind<EffectPool>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
         private void RegisterObstacle<T>(T obstacle) where T : IPause =>
             Container
                 .Bind<T>()

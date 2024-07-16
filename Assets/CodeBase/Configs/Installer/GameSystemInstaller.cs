@@ -15,16 +15,7 @@ namespace CodeBase.Configs.Installer
             RegisterInput();
             RegisterWallet();
             RegisterSaveScore();
-            RegisterLoadMainMenu();
         }
-
-        private void RegisterLoadMainMenu()
-        {
-            Container
-                .BindInterfacesTo<LoadMainMenu>()
-                .AsCached();
-        }
-
         private void RegisterSaveScore()
         {
             Container

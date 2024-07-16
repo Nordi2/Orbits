@@ -13,10 +13,14 @@ namespace CodeBase.Logic.ScoreLogic
 
         private TriggerObserver _triggerObserver;
         private ScoreWallet _scoreWallet;
+        private EffectPool _effectPool;
 
         [Inject]
-        private void Construct(ScoreWallet scoreWallet) =>
+        private void Construct(ScoreWallet scoreWallet, EffectPool effectPool)
+        {
+            _effectPool = effectPool;
             _scoreWallet = scoreWallet;
+        }
 
         #region MonoBehaviour
 
@@ -37,6 +41,12 @@ namespace CodeBase.Logic.ScoreLogic
 
         private void TriggerEnter()
         {
+            if (_effectPool.TryGetEffectInPool(out ParticleSystem effect))
+            {
+                effect.gameObject.SetActive(true);
+                effect.transform.position = transform.position;
+            }
+
             SwapPosition();
             _scoreWallet.AddScore();
         }
