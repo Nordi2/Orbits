@@ -8,15 +8,37 @@ namespace CodeBase.Infrastructure.Service
     [UsedImplicitly]
     public class InputService : ITickable, IInputService
     {
-        public event Action OnClickMouseButton;
-        public event Action OnClickFirsrMouseButton;
+        public event Action OnClick;
+        public event Action OnClickFirst;
 
         public void Tick()
         {
+#if (UNITY_ANDROID || Unity_IOS) && !UNITY_EDITOR
+            MobileInput();
+#else
+            DestopInput();
+#endif
+        }
+
+        private void MobileInput()
+        {
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.touches[0];
+                if (touch.phase == TouchPhase.Began)
+                {
+                    OnClick?.Invoke();
+                    OnClickFirst?.Invoke();
+                }
+            }
+        }
+
+        private void DestopInput()
+        {
             if (Input.GetMouseButtonDown(0))
             {
-                OnClickMouseButton?.Invoke();
-                OnClickFirsrMouseButton?.Invoke();
+                OnClick?.Invoke();
+                OnClickFirst?.Invoke();
             }
         }
     }

@@ -30,7 +30,7 @@ namespace CodeBase.Logic
 
         void IInitializable.Initialize()
         {
-            _inputService.OnClickFirsrMouseButton += ClickFirstMouseButton;
+            _inputService.OnClickFirst += ClickFirstMouseButton;
             _scoreSpawner.StopAction();
             
             foreach (var obstacle in _obstacles)
@@ -40,7 +40,7 @@ namespace CodeBase.Logic
         }
 
         void IDisposable.Dispose() =>
-            _inputService.OnClickFirsrMouseButton -= ClickFirstMouseButton;
+            _inputService.OnClickFirst -= ClickFirstMouseButton;
 
         private void ClickFirstMouseButton()
         {
@@ -49,7 +49,7 @@ namespace CodeBase.Logic
             
             _scoreSpawner.StartAction();
             _playerMovement.StartAction();
-            _inputService.OnClickFirsrMouseButton -= ClickFirstMouseButton;
+            _inputService.OnClickFirst -= ClickFirstMouseButton;
         }
     }
 }

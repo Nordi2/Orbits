@@ -9,8 +9,7 @@ namespace CodeBase.Installers
 {
     public class SceneInstaller : MonoInstaller
     {
-        public ScoreFacade ScorePrefab;
-
+        [SerializeField] private ScoreMark _scorePrefab;
         [SerializeField] private ObstacleFacade _obstacleFar;
         [SerializeField] private ObstacleFacade _obstacleMiddle;
         [SerializeField] private ObstacleFacade _obstacleClose;
@@ -24,7 +23,6 @@ namespace CodeBase.Installers
             RegisterSpawner();
             RegisterFactory();
         }
-
         private void RegisterObstacle<T>(T obstacle) where T : IPause =>
             Container
                 .Bind<T>()
@@ -40,8 +38,8 @@ namespace CodeBase.Installers
 
         private void RegisterFactory() =>
             Container
-                .BindFactory<Score, Factory>()
-                .FromComponentInNewPrefab(ScorePrefab);
+                .BindFactory<Score, ScoreFactory>()
+                .FromComponentInNewPrefab(_scorePrefab);
 
         private void RegisterSpawner() =>
             Container

@@ -1,41 +1,24 @@
-using System;
 using JetBrains.Annotations;
-using Zenject;
 
 namespace CodeBase.Logic.ScoreLogic
 {
     [UsedImplicitly]
-    public class ScoreSpawner : IDisposable, IPauseAction
+    public class ScoreSpawner : IPauseAction
     {
-        private readonly Factory _scoreFactory;
-        private Score _currentScore;
+        private readonly ScoreFactory _scoreFactory;
         private bool _isPause;
 
-        public ScoreSpawner(Factory scoreFactory)
+        public ScoreSpawner(ScoreFactory scoreScoreFactory)
         {
-            _scoreFactory = scoreFactory;
-        }
-        public void Dispose()
-        {
-            if (_currentScore != null)
-            {
-                _currentScore.OnScoreCollected -= ScoreCollected;
-            }
+            _scoreFactory = scoreScoreFactory;
         }
 
         private void SpawnScore()
         {
             if (!_isPause)
             {
-                _currentScore = _scoreFactory.Create();
-                _currentScore.OnScoreCollected += ScoreCollected;
+                _scoreFactory.Create();
             }
-        }
-
-        private void ScoreCollected()
-        {
-            _currentScore.OnScoreCollected -= ScoreCollected;
-            SpawnScore();
         }
 
         public void StopAction() =>

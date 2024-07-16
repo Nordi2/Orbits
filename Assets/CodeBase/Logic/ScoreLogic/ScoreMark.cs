@@ -2,8 +2,7 @@ using UnityEngine;
 
 namespace CodeBase.Logic.ScoreLogic
 {
-    public class ScoreFacade : MonoBehaviour
+    public class ScoreMark : MonoBehaviour
     {
-        
     }
 }

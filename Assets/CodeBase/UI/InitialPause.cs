@@ -21,16 +21,16 @@ namespace CodeBase.UI
             _tween = _text.DOFade(0, 1).SetLoops(-1, LoopType.Yoyo);
 
         private void OnEnable() =>
-            _inputService.OnClickFirsrMouseButton += StopAnimation;
+            _inputService.OnClickFirst += StopAnimation;
 
         private void OnDisable() =>
-            _inputService.OnClickFirsrMouseButton -= StopAnimation;
+            _inputService.OnClickFirst -= StopAnimation;
 
         private void StopAnimation()
         {
             _tween.Kill();
             _text.gameObject.SetActive(false);
-            _inputService.OnClickFirsrMouseButton -= StopAnimation;
+            _inputService.OnClickFirst -= StopAnimation;
         }
     }
 }

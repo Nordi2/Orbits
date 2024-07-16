@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using CodeBase.UI.Score;
 using UnityEngine;
@@ -11,9 +10,9 @@ namespace CodeBase.Logic.ScoreLogic
     {
         [SerializeField] private Transform _centerTranform;
         [SerializeField] private List<float> _spawnPosX;
+
         private TriggerObserver _triggerObserver;
         private ScoreWallet _scoreWallet;
-        public event Action OnScoreCollected;
 
         [Inject]
         private void Construct(ScoreWallet scoreWallet) =>
@@ -24,16 +23,12 @@ namespace CodeBase.Logic.ScoreLogic
         private void Awake() =>
             _triggerObserver = GetComponent<TriggerObserver>();
 
-        private void Start()
-        {
-            transform.localPosition = GetSpawnPosition();
-            _centerTranform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 37) * 10f);
-        }
+        private void Start() =>
+            SwapPosition();
 
-        private void OnEnable()
-        {
+
+        private void OnEnable() =>
             _triggerObserver.TriggerEnter += TriggerEnter;
-        }
 
         private void OnDisable() =>
             _triggerObserver.TriggerEnter -= TriggerEnter;
@@ -42,9 +37,14 @@ namespace CodeBase.Logic.ScoreLogic
 
         private void TriggerEnter()
         {
+            SwapPosition();
             _scoreWallet.AddScore();
-            OnScoreCollected?.Invoke();
-            Destroy(_centerTranform.gameObject);
+        }
+
+        private void SwapPosition()
+        {
+            transform.localPosition = GetSpawnPosition();
+            _centerTranform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 37) * 10f);
         }
 
         private Vector3 GetSpawnPosition() =>

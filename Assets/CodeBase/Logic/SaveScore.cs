@@ -1,7 +1,9 @@
 using System;
+using System.IO;
 using CodeBase.Logic.PlayerLogic;
 using CodeBase.UI.Score;
 using JetBrains.Annotations;
+using UnityEngine;
 using Zenject;
 
 namespace CodeBase.Logic
@@ -26,9 +28,14 @@ namespace CodeBase.Logic
 
         private void SaveProgress()
         {
-            if (!SaveSystem.SaveProgress.IsSave)
+            string pathIsSave = Application.persistentDataPath + "/score.txt";
+            if (File.Exists(pathIsSave))
             {
                 SaveSystem.SaveProgress.SaveScore(_scoreWallet);
+            }
+            else
+            {
+                SaveSystem.SaveProgress.FirstSaveScore(_scoreWallet);
             }
         }
     }

@@ -11,7 +11,8 @@ namespace CodeBase.Installers
 
         public override void InstallBindings()
         {
-            Container.BindInterfacesTo<StartGameButton>().AsSingle().WithArguments(_startButton).NonLazy();
+            Container.BindInterfacesTo<StartGameButton>().AsSingle()
+                .WithArguments(_startButton).NonLazy();
             Container.Bind<LoadScreen>().FromComponentInHierarchy().AsSingle();
         }
     }
