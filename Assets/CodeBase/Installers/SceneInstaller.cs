@@ -13,6 +13,7 @@ namespace CodeBase.Installers
         [SerializeField] private ObstacleFacade _obstacleFar;
         [SerializeField] private ObstacleFacade _obstacleMiddle;
         [SerializeField] private ObstacleFacade _obstacleClose;
+
         public override void InstallBindings()
         {
             RegisterObstacle<IObstacleFacade>(_obstacleClose);
@@ -23,6 +24,8 @@ namespace CodeBase.Installers
             RegisterFactory();
             RegisterEffectPool();
         }
+
+        #region Register Method
 
         private void RegisterEffectPool() =>
             Container
@@ -52,5 +55,7 @@ namespace CodeBase.Installers
             Container
                 .BindInterfacesAndSelfTo<ScoreSpawner>()
                 .AsCached();
+
+        #endregion
     }
 }

@@ -21,10 +21,6 @@ namespace CodeBase.SaveSystem
                 formatter.Serialize(stream, data);
                 stream.Close();
             }
-            else
-            {
-                return;
-            }
         }
 
         public static void FirstSaveScore(ScoreWallet scoreWallet)

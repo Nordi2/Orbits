@@ -2,7 +2,7 @@ using System;
 using CodeBase.Logic.PlayerLogic;
 using UnityEngine;
 
-namespace CodeBase
+namespace CodeBase.Logic.ScoreLogic
 {
     public class TriggerObserver : MonoBehaviour
     {

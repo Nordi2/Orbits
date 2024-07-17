@@ -25,10 +25,8 @@ namespace CodeBase.Logic
         private void OnDisable() =>
             _playerFacade.DiePlayer -= LoadMenu;
 
-        private void LoadMenu()
-        {
+        private void LoadMenu() =>
             StartCoroutine(Load("MainMenu", _timeExpectation));
-        }
 
         private IEnumerator Load(string nameScene, float time)
         {

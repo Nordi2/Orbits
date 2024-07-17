@@ -13,11 +13,13 @@ namespace CodeBase.Installers
             RegisterObstacleConfig();
         }
 
-        private void RegisterObstacleConfig()
-        {
+        #region Register Method
+
+        private void RegisterObstacleConfig() =>
             Container
                 .BindInstance(_obstacleConfig)
                 .AsSingle();
-        }
+
+        #endregion
     }
 }

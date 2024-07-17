@@ -30,8 +30,6 @@ namespace CodeBase.Logic.PlayerLogic
             _playerConfig = playerConfig;
         }
 
-        #region MonoBehaviour
-
         private void Awake()
         {
             _level = 0;
@@ -57,9 +55,6 @@ namespace CodeBase.Logic.PlayerLogic
             _rotateTransform.Rotate(0, 0, rotateValue);
         }
 
-        #endregion
-
-        #region Private Method
 
         private void ClickMouseButton() =>
             _changeRadiusCoroutine ??= StartCoroutine(ChangeRadius());
@@ -83,7 +78,5 @@ namespace CodeBase.Logic.PlayerLogic
 
             _changeRadiusCoroutine = null;
         }
-
-        #endregion
     }
 }

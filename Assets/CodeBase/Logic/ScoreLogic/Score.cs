@@ -22,14 +22,11 @@ namespace CodeBase.Logic.ScoreLogic
             _scoreWallet = scoreWallet;
         }
 
-        #region MonoBehaviour
-
         private void Awake() =>
             _triggerObserver = GetComponent<TriggerObserver>();
 
         private void Start() =>
             SwapPosition();
-
 
         private void OnEnable() =>
             _triggerObserver.TriggerEnter += TriggerEnter;
@@ -37,7 +34,6 @@ namespace CodeBase.Logic.ScoreLogic
         private void OnDisable() =>
             _triggerObserver.TriggerEnter -= TriggerEnter;
 
-        #endregion
 
         private void TriggerEnter()
         {

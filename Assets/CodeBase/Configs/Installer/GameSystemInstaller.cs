@@ -16,32 +16,29 @@ namespace CodeBase.Configs.Installer
             RegisterWallet();
             RegisterSaveScore();
         }
-        private void RegisterSaveScore()
-        {
+
+        #region Register Method
+
+        private void RegisterSaveScore() =>
             Container
                 .BindInterfacesTo<SaveScore>()
-                .AsCached();
-        }
+                .AsSingle();
 
-        private void RegisterStopAction()
-        {
+        private void RegisterStopAction() =>
             Container
                 .BindInterfacesTo<StopActionObject>()
                 .AsCached();
-        }
 
-        private void RegisterInput()
-        {
+        private void RegisterInput() =>
             Container
                 .BindInterfacesTo<InputService>()
                 .AsSingle();
-        }
 
-        private void RegisterWallet()
-        {
+        private void RegisterWallet() =>
             Container
                 .Bind<ScoreWallet>()
                 .AsSingle();
-        }
+
+        #endregion
     }
 }

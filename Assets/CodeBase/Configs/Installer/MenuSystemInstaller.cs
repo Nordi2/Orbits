@@ -12,12 +12,14 @@ namespace CodeBase.Configs.Installer
             RegisterLoadScore();
         }
 
-        private void RegisterLoadScore()
-        {
+        #region Register Method
+
+        private void RegisterLoadScore() =>
             Container
                 .BindInterfacesAndSelfTo<LoadScore>()
-                .AsCached()
+                .AsSingle()
                 .NonLazy();
-        }
+
+        #endregion
     }
 }

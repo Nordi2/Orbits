@@ -24,17 +24,17 @@ namespace CodeBase.Logic.PlayerLogic
         private void OnDisable() =>
             _deathObserver.TriggerEnter -= Death;
 
+        public void StartAction() =>
+            GetComponentInChildren<PlayerMovement>().enabled = true;
+
+        public void StopAction() =>
+            GetComponentInChildren<PlayerMovement>().enabled = false;
+
         private void Death()
         {
             DiePlayer?.Invoke();
             Instantiate(_explosionParticle, _spawnPointParticle.transform.position, quaternion.identity);
             Destroy(gameObject);
         }
-
-        public void StopAction() =>
-            GetComponentInChildren<PlayerMovement>().enabled = false;
-
-        public void StartAction() =>
-            GetComponentInChildren<PlayerMovement>().enabled = true;
     }
 }

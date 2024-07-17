@@ -13,8 +13,6 @@ namespace CodeBase.UI.Score
         private void Construct(ScoreWallet scoreWallet) =>
             _scoreWallet = scoreWallet;
 
-        #region MonoBehaviour
-
         private void Start() =>
             UpdateCoinView();
 
@@ -23,8 +21,6 @@ namespace CodeBase.UI.Score
 
         private void OnDisable() =>
             _scoreWallet.AddScoreEvent -= UpdateCoinView;
-
-        #endregion
 
         private void UpdateCoinView() =>
             _textMeshPro.text = _scoreWallet.Score.ToString();

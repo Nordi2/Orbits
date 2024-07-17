@@ -13,19 +13,19 @@ namespace CodeBase.Data
         public PlayerData(ScoreWallet wallet)
         {
             _score = wallet.Score;
-            if (_score > _maxScore)
-            {
-                _maxScore = _score;
-            }
+            CheckRecord();
         }
 
         public void SaveScore(ScoreWallet wallet)
         {
             _score = wallet.Score;
+            CheckRecord();
+        }
+
+        private void CheckRecord()
+        {
             if (_score > _maxScore)
-            {
                 _maxScore = _score;
-            }
         }
     }
 }

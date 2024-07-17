@@ -15,9 +15,7 @@ namespace CodeBase.Logic.ObstaclLogic
         private void Start() =>
             _obstacleFacade = transform.GetComponentInParent<ObstacleFacade>();
 
-        private void FixedUpdate()
-        {
+        private void FixedUpdate() =>
             base.FixedUpdate(_obstacleFacade.transform, _obstacleConfig.Speed);
-        }
     }
 }

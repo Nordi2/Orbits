@@ -16,9 +16,7 @@ namespace CodeBase.UI.MainMenu
             _score = score;
         }
 
-        private void Start()
-        {
+        private void Start() =>
             _maxScore.text = _score.MaxScore.ToString();
-        }
     }
 }
