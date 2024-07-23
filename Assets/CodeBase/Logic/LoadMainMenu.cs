@@ -11,10 +11,10 @@ namespace CodeBase.Logic
     public class LoadMainMenu : MonoBehaviour
     {
         [SerializeField] private float _timeExpectation;
-        private IPlayerFacade _playerFacade;
+        private PlayerDeath _playerFacade;
 
         [Inject]
-        public void Construct(IPlayerFacade playerFacade)
+        public void Construct(PlayerDeath playerFacade)
         {
             _playerFacade = playerFacade;
         }

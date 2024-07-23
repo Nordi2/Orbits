@@ -10,16 +10,9 @@ namespace CodeBase.Installers
 
         public override void InstallBindings()
         {
-            RegisterPlayerConfig();
-        }
-
-        #region Register Method
-
-        private void RegisterPlayerConfig() =>
             Container
                 .BindInstance(_playerConfig)
                 .AsSingle();
-
-        #endregion
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace CodeBase.UI.Score
     {
         [SerializeField] private TextMeshProUGUI _textMeshPro;
 
-        public void UpdateCoinView(int score) =>
+        public void UpdateScoreView(int score) =>
             _textMeshPro.text = score.ToString();
     }
 }

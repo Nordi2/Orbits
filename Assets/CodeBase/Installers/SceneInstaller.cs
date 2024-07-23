@@ -15,12 +15,23 @@ namespace CodeBase.Installers
         [SerializeField] private Obstacle _obstacleMiddle;
         [SerializeField] private Obstacle _obstacleClose;
 
+        private PlayerDeath _playerDeath;
+        private PlayerMovement _playerMovement;
         public override void InstallBindings()
         {
             RegisterObstacle(_obstacleClose);
             RegisterObstacle(_obstacleMiddle);
             RegisterObstacle(_obstacleFar);
-            RegisterPlayer<IPlayerFacade, PlayerFacade>();
+
+            Container
+                .Bind<PlayerMovement>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
+            Container
+                .Bind<PlayerDeath>()
+                .FromComponentInHierarchy()
+                .AsSingle();
 
             Container
                 .BindInterfacesAndSelfTo<ScoreSpawner>()
@@ -46,12 +57,5 @@ namespace CodeBase.Installers
                 .Bind<T>()
                 .FromInstance(obstacle)
                 .AsCached();
-
-        private void RegisterPlayer<T, TA>() where T : IPause where TA : T =>
-            Container
-                .Bind<T>()
-                .To<TA>()
-                .FromComponentInHierarchy()
-                .AsSingle();
     }
 }

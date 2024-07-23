@@ -29,6 +29,6 @@ namespace CodeBase.UI.Score
         }
 
         private void UpdateCoinView() =>
-            _scoreView.UpdateCoinView(_scoreWallet.Score);
+            _scoreView.UpdateScoreView(_scoreWallet.Score);
     }
 }

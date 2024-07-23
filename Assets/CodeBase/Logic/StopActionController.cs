@@ -11,7 +11,7 @@ namespace CodeBase.Logic
     [UsedImplicitly]
     public class StopActionController : IInitializable, IDisposable
     {
-        private readonly IPlayerFacade _playerMovement;
+        private readonly PlayerMovement _playerMovement;
         private readonly IInputService _inputService;
         private readonly ScoreSpawner _scoreSpawner;
         private readonly Obstacle[] _obstacles;
@@ -19,7 +19,7 @@ namespace CodeBase.Logic
         public StopActionController(
             Obstacle[] obstacles,
             ScoreSpawner scoreSpawner,
-            IPlayerFacade playerMovement,
+            PlayerMovement playerMovement,
             IInputService inputService)
         {
             _obstacles = obstacles;

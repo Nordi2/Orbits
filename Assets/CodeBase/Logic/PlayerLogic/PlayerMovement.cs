@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using CodeBase.Configs.Player;
 using CodeBase.Infrastructure.Service;
 using UnityEngine;
@@ -21,7 +23,6 @@ namespace CodeBase.Logic.PlayerLogic
         private float _currentRadius;
         private float _moveTime;
         private Coroutine _changeRadiusCoroutine;
-
 
         [Inject]
         private void Construct(IInputService inputService, PlayerConfig playerConfig)
@@ -56,9 +57,30 @@ namespace CodeBase.Logic.PlayerLogic
         }
 
 
-        private void ClickMouseButton() =>
-            _changeRadiusCoroutine ??= StartCoroutine(ChangeRadius());
+        private void ClickMouseButton()
+        {
+          //  TestMethod();
+             _changeRadiusCoroutine ??= StartCoroutine(ChangeRadius());
+        }
 
+        //private async void TestMethod()
+        //{
+        //    float moveStartRadius = _rotateRadius[_level];
+        //    float moveEndRadius = _rotateRadius[(_level + 1) % _rotateRadius.Count];
+        //    float moveOffset = moveEndRadius - moveStartRadius;
+        //    float speed = 1 / _moveTime;
+        //    float timeElasped = 0f;
+        //    while (timeElasped < 1f)
+        //    {
+        //        timeElasped += speed * Time.fixedDeltaTime;
+        //        _currentRadius = moveStartRadius + timeElasped * moveOffset;
+        //        await Task.Delay(TimeSpan.FromMilliseconds((Time.fixedDeltaTime * 0.25f)));
+        //    }
+
+        //    _level = (_level + 1) % _rotateRadius.Count;
+        //    _currentRadius = _rotateRadius[_level];
+
+        //}
         private IEnumerator ChangeRadius()
         {
             float moveStartRadius = _rotateRadius[_level];
@@ -79,12 +101,10 @@ namespace CodeBase.Logic.PlayerLogic
             _changeRadiusCoroutine = null;
         }
 
-        public void StopAction()
-        {
-        }
+        public void StopAction() =>
+            GetComponent<PlayerMovement>().enabled = false;
 
-        public void StartAction()
-        {
-        }
+        public void StartAction() =>
+            GetComponent<PlayerMovement>().enabled = true;
     }
 }

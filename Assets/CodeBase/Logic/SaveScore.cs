@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using CodeBase.Data;
 using CodeBase.Logic.PlayerLogic;
 using CodeBase.UI.Score;
 using JetBrains.Annotations;
@@ -11,31 +12,28 @@ namespace CodeBase.Logic
     [UsedImplicitly]
     public class SaveScore : IInitializable, IDisposable
     {
-        private readonly IPlayerFacade _playerFacade;
+        private readonly PlayerDeath _playerDeath;
         private readonly ScoreWallet _scoreWallet;
-
-        public SaveScore(IPlayerFacade playerFacade, ScoreWallet scoreWallet)
+        private readonly PlayerData _playerData;
+        public SaveScore(PlayerDeath playerdeath, ScoreWallet scoreWallet, PlayerData playerData)
         {
-            _playerFacade = playerFacade;
+            _playerData = playerData;
+            _playerDeath = playerdeath;
             _scoreWallet = scoreWallet;
         }
 
         void IInitializable.Initialize() =>
-            _playerFacade.DiePlayer += SaveProgress;
+            _playerDeath.DiePlayer += SaveProgress;
 
         void IDisposable.Dispose() =>
-            _playerFacade.DiePlayer -= SaveProgress;
+            _playerDeath.DiePlayer -= SaveProgress;
 
         private void SaveProgress()
         {
-            string pathIsSave = Application.persistentDataPath + "/score.txt";
-            if (File.Exists(pathIsSave))
+            if (_playerData.Score < _scoreWallet.Score)
             {
-                SaveSystem.SaveProgress.SaveScore(_scoreWallet);
-            }
-            else
-            {
-                SaveSystem.SaveProgress.FirstSaveScore(_scoreWallet);
+                _playerData.NewRecord(_scoreWallet.Score);
+                Assets.CodeBase.Infrastructure.Service.SaveSystem.SaveProgress.SaveScore(_playerData);
             }
         }
     }

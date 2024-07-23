@@ -1,6 +1,8 @@
-﻿using CodeBase.Data;
-using CodeBase.SaveSystem;
+﻿using Assets.CodeBase.Infrastructure.Service.SaveSystem;
+using CodeBase.Data;
+using CodeBase.UI.Score;
 using JetBrains.Annotations;
+using UnityEngine;
 using Zenject;
 
 namespace CodeBase.Logic
@@ -8,13 +10,20 @@ namespace CodeBase.Logic
     [UsedImplicitly]
     public class LoadScore : IInitializable
     {
-        private int _maxScore;
-        public int MaxScore => _maxScore;
+        private ScoreView _scoreView;
+        private int _score;
+        public int Score => _score;
 
-        public void Initialize()
+        public LoadScore(ScoreView scoreView)
+        {
+            _scoreView = scoreView;
+        }
+
+        void IInitializable.Initialize()
         {
             PlayerData data = LoadProgress.LoadPlayer();
-            _maxScore = data?.MaxScore ?? Constant.InitialScore;
+            _score = data?.Score ?? Constant.InitialScore;
+            _scoreView.UpdateScoreView(_score);
         }
     }
 }

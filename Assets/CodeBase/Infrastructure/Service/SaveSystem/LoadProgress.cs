@@ -3,7 +3,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using CodeBase.Data;
 using UnityEngine;
 
-namespace CodeBase.SaveSystem
+namespace Assets.CodeBase.Infrastructure.Service.SaveSystem
 {
     public static class LoadProgress
     {
