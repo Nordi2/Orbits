@@ -10,16 +10,9 @@ namespace CodeBase.Installers
 
         public override void InstallBindings()
         {
-            RegisterObstacleConfig();
-        }
-
-        #region Register Method
-
-        private void RegisterObstacleConfig() =>
             Container
                 .BindInstance(_obstacleConfig)
                 .AsSingle();
-
-        #endregion
+        }
     }
 }

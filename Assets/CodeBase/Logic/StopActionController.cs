@@ -14,10 +14,10 @@ namespace CodeBase.Logic
         private readonly IPlayerFacade _playerMovement;
         private readonly IInputService _inputService;
         private readonly ScoreSpawner _scoreSpawner;
-        private readonly IObstacleFacade[] _obstacles;
+        private readonly Obstacle[] _obstacles;
 
         public StopActionController(
-            IObstacleFacade[] obstacles,
+            Obstacle[] obstacles,
             ScoreSpawner scoreSpawner,
             IPlayerFacade playerMovement,
             IInputService inputService)
@@ -32,10 +32,10 @@ namespace CodeBase.Logic
         {
             _inputService.OnClick += ClickFirstMouseButton;
             _scoreSpawner.StopAction();
-            
-            foreach (var obstacle in _obstacles)
+
+            foreach (Obstacle obstacle in _obstacles)
                 obstacle.StopAction();
-            
+
             _playerMovement.StopAction();
         }
 
@@ -44,9 +44,9 @@ namespace CodeBase.Logic
 
         private void ClickFirstMouseButton()
         {
-            foreach (var obstacle in _obstacles)
+            foreach (Obstacle obstacle in _obstacles)
                 obstacle.StartAction();
-            
+
             _scoreSpawner.StartAction();
             _playerMovement.StartAction();
             _inputService.OnClick -= ClickFirstMouseButton;

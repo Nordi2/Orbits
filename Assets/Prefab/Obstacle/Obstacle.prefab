@@ -98,7 +98,6 @@ GameObject:
   - component: {fileID: 2576484587965609088}
   - component: {fileID: 1883650023028981436}
   - component: {fileID: 2955370260105702681}
-  - component: {fileID: 9213845886275181268}
   m_Layer: 0
   m_Name: ObstacleMovement
   m_TagString: Untagged
@@ -188,18 +187,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _obstacleConfig: {fileID: 11400000, guid: b13f1d55c1c1c0849b9c3ab0399f20b1, type: 2}
---- !u!114 &9213845886275181268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5488603829384819796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dc758dc77c736249905eb0a1e2e00b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5932191356792257055
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +280,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6686717521272085070}
-  - component: {fileID: 1440981548012575866}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -317,18 +303,6 @@ Transform:
   - {fileID: 6248598742585655104}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1440981548012575866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7607960993943832882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0106904a4e40fed4a9cdc4c6700c3e9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8813368564704196862
 GameObject:
   m_ObjectHideFlags: 0

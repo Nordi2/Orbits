@@ -24,7 +24,7 @@ namespace CodeBase.Logic.ScoreLogic
         private void Awake()
         {
             _scoreTriggerObserver = GetComponent<ScoreTriggerObserver>();
-            _centerTransform = GetComponentInParent<ScoreMark>().transform;
+            _centerTransform = gameObject.transform.parent;
         }
 
         private void Start()

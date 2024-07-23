@@ -10,29 +10,36 @@ namespace CodeBase.Installers
 {
     public class SceneInstaller : MonoInstaller
     {
-        [SerializeField] private ScoreMark _scorePrefab;
-        [SerializeField] private ObstacleFacade _obstacleFar;
-        [SerializeField] private ObstacleFacade _obstacleMiddle;
-        [SerializeField] private ObstacleFacade _obstacleClose;
+        [SerializeField] private GameObject _scorePrefab;
+        [SerializeField] private Obstacle _obstacleFar;
+        [SerializeField] private Obstacle _obstacleMiddle;
+        [SerializeField] private Obstacle _obstacleClose;
 
         public override void InstallBindings()
         {
-            RegisterObstacle<IObstacleFacade>(_obstacleClose);
-            RegisterObstacle<IObstacleFacade>(_obstacleMiddle);
-            RegisterObstacle<IObstacleFacade>(_obstacleFar);
+            RegisterObstacle(_obstacleClose);
+            RegisterObstacle(_obstacleMiddle);
+            RegisterObstacle(_obstacleFar);
             RegisterPlayer<IPlayerFacade, PlayerFacade>();
-            RegisterSpawner();
-            RegisterFactory();
-            RegisterEffectPool();
-            Container.Bind<ScoreView>().FromComponentInHierarchy().AsSingle();
-        }
 
+            Container
+                .BindInterfacesAndSelfTo<ScoreSpawner>()
+                .AsSingle();
 
-        private void RegisterEffectPool() =>
+            Container
+                .BindFactory<Score, ScoreFactory>()
+                .FromComponentInNewPrefab(_scorePrefab);
+
             Container
                 .Bind<EffectPool>()
                 .FromComponentInHierarchy()
                 .AsSingle();
+
+            Container
+                .Bind<ScoreView>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+        }
 
         private void RegisterObstacle<T>(T obstacle) where T : IPause =>
             Container
@@ -45,16 +52,6 @@ namespace CodeBase.Installers
                 .Bind<T>()
                 .To<TA>()
                 .FromComponentInHierarchy()
-                .AsSingle();
-
-        private void RegisterFactory() =>
-            Container
-                .BindFactory<Score, ScoreFactory>()
-                .FromComponentInNewPrefab(_scorePrefab);
-
-        private void RegisterSpawner() =>
-            Container
-                .BindInterfacesAndSelfTo<ScoreSpawner>()
                 .AsSingle();
     }
 }
