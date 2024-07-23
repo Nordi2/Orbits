@@ -7,7 +7,7 @@ using Zenject;
 
 namespace CodeBase.Logic.PlayerLogic
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour, IPauseAction
     {
         [SerializeField] private float _startRadius;
         [SerializeField] private List<float> _rotateRadius;
@@ -77,6 +77,14 @@ namespace CodeBase.Logic.PlayerLogic
             _currentRadius = _rotateRadius[_level];
 
             _changeRadiusCoroutine = null;
+        }
+
+        public void StopAction()
+        {
+        }
+
+        public void StartAction()
+        {
         }
     }
 }

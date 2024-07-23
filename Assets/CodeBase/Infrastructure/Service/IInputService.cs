@@ -5,6 +5,5 @@ namespace CodeBase.Infrastructure.Service
     public interface IInputService
     {
         event Action OnClick;
-        event Action OnClickFirst;
     }
 }

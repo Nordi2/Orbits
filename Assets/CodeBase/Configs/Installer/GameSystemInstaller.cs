@@ -10,11 +10,13 @@ namespace CodeBase.Configs.Installer
     public class GameSystemInstaller : ScriptableObjectInstaller
     {
         public override void InstallBindings()
+        
         {
             RegisterStopAction();
             RegisterInput();
             RegisterWallet();
             RegisterSaveScore();
+            Container.BindInterfacesTo<ScoreController>().AsSingle();
         }
 
         #region Register Method
@@ -26,7 +28,7 @@ namespace CodeBase.Configs.Installer
 
         private void RegisterStopAction() =>
             Container
-                .BindInterfacesTo<StopActionObject>()
+                .BindInterfacesTo<StopActionController>()
                 .AsCached();
 
         private void RegisterInput() =>

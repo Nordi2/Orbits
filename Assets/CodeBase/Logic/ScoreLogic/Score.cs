@@ -1,41 +1,45 @@
-using System.Collections.Generic;
 using CodeBase.UI.Score;
 using UnityEngine;
 using Zenject;
-using Random = UnityEngine.Random;
 
 namespace CodeBase.Logic.ScoreLogic
 {
     public class Score : MonoBehaviour
     {
-        [SerializeField] private Transform _centerTranform;
-        [SerializeField] private List<float> _spawnPosX;
+        [SerializeField] private Transform _centerTransform;
 
-        private TriggerObserver _triggerObserver;
+        private ScoreTriggerObserver _scoreTriggerObserver;
         private ScoreWallet _scoreWallet;
         private EffectPool _effectPool;
+        private ScoreSpawner _scoreSpawner;
 
         [Inject]
-        private void Construct(ScoreWallet scoreWallet, EffectPool effectPool)
+        public void Construct(ScoreWallet scoreWallet, EffectPool effectPool, ScoreSpawner scoreSpawner)
         {
             _effectPool = effectPool;
             _scoreWallet = scoreWallet;
+            _scoreSpawner = scoreSpawner;
         }
 
-        private void Awake() =>
-            _triggerObserver = GetComponent<TriggerObserver>();
+        private void Awake()
+        {
+            _scoreTriggerObserver = GetComponent<ScoreTriggerObserver>();
+            _centerTransform = GetComponentInParent<ScoreMark>().transform;
+        }
 
-        private void Start() =>
-            SwapPosition();
+        private void Start()
+        {
+            _scoreSpawner.SwapPosition(_centerTransform, gameObject.transform);
+        }
 
         private void OnEnable() =>
-            _triggerObserver.TriggerEnter += TriggerEnter;
+            _scoreTriggerObserver.TriggerEnter += ScoreTriggerEnter;
 
         private void OnDisable() =>
-            _triggerObserver.TriggerEnter -= TriggerEnter;
+            _scoreTriggerObserver.TriggerEnter -= ScoreTriggerEnter;
 
 
-        private void TriggerEnter()
+        private void ScoreTriggerEnter()
         {
             if (_effectPool.TryGetEffectInPool(out ParticleSystem effect))
             {
@@ -43,17 +47,8 @@ namespace CodeBase.Logic.ScoreLogic
                 effect.transform.position = transform.position;
             }
 
-            SwapPosition();
+            _scoreSpawner.SwapPosition(_centerTransform, gameObject.transform);
             _scoreWallet.AddScore();
         }
-
-        private void SwapPosition()
-        {
-            transform.localPosition = GetSpawnPosition();
-            _centerTranform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 37) * 10f);
-        }
-
-        private Vector3 GetSpawnPosition() =>
-            Vector3.right * _spawnPosX[Random.Range(0, _spawnPosX.Count)];
     }
 }

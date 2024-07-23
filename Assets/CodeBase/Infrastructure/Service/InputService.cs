@@ -9,7 +9,6 @@ namespace CodeBase.Infrastructure.Service
     public class InputService : ITickable, IInputService
     {
         public event Action OnClick;
-        public event Action OnClickFirst;
 
         public void Tick()
         {
@@ -28,7 +27,6 @@ namespace CodeBase.Infrastructure.Service
                 if (touch.phase == TouchPhase.Began)
                 {
                     OnClick?.Invoke();
-                    OnClickFirst?.Invoke();
                 }
             }
         }
@@ -38,7 +36,6 @@ namespace CodeBase.Infrastructure.Service
             if (Input.GetMouseButtonDown(0))
             {
                 OnClick?.Invoke();
-                OnClickFirst?.Invoke();
             }
         }
     }

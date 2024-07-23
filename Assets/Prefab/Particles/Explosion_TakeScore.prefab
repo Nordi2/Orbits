@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4065162973123696190}
   - component: {fileID: 8031822716640448567}
   m_Layer: 0
-  m_Name: Explosion_White
+  m_Name: Explosion_TakeScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

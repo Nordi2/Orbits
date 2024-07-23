@@ -1,15 +1,16 @@
-using System;
+﻿using System;
 using Unity.Mathematics;
 using UnityEngine;
 
 namespace CodeBase.Logic.PlayerLogic
 {
-    public class PlayerFacade : MonoBehaviour, IPlayerFacade
+    public class PlayerDeath : MonoBehaviour
     {
         [SerializeField] private ParticleSystem _explosionParticle;
 
         private Transform _spawnPointParticle;
         private PlayerDeathObserver _playerDeathObserver;
+
         public event Action DiePlayer;
 
         private void Awake()
@@ -19,18 +20,12 @@ namespace CodeBase.Logic.PlayerLogic
         }
 
         private void OnEnable() =>
-            _playerDeathObserver.TriggerEnter += PlayerDeath;
+            _playerDeathObserver.TriggerEnter += CollisionWithAnObstacle;
 
         private void OnDisable() =>
-            _playerDeathObserver.TriggerEnter -= PlayerDeath;
+            _playerDeathObserver.TriggerEnter += CollisionWithAnObstacle;
 
-        public void StartAction() =>
-            GetComponentInChildren<PlayerMovement>().enabled = true;
-
-        public void StopAction() =>
-            GetComponentInChildren<PlayerMovement>().enabled = false;
-
-        private void PlayerDeath()
+        private void CollisionWithAnObstacle()
         {
             DiePlayer?.Invoke();
             Instantiate(_explosionParticle, _spawnPointParticle.transform.position, quaternion.identity);

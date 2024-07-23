@@ -9,14 +9,14 @@ using Zenject;
 namespace CodeBase.Logic
 {
     [UsedImplicitly]
-    public class StopActionObject : IInitializable, IDisposable
+    public class StopActionController : IInitializable, IDisposable
     {
         private readonly IPlayerFacade _playerMovement;
         private readonly IInputService _inputService;
         private readonly ScoreSpawner _scoreSpawner;
         private readonly IObstacleFacade[] _obstacles;
 
-        public StopActionObject(
+        public StopActionController(
             IObstacleFacade[] obstacles,
             ScoreSpawner scoreSpawner,
             IPlayerFacade playerMovement,
@@ -30,7 +30,7 @@ namespace CodeBase.Logic
 
         void IInitializable.Initialize()
         {
-            _inputService.OnClickFirst += ClickFirstMouseButton;
+            _inputService.OnClick += ClickFirstMouseButton;
             _scoreSpawner.StopAction();
             
             foreach (var obstacle in _obstacles)
@@ -40,7 +40,7 @@ namespace CodeBase.Logic
         }
 
         void IDisposable.Dispose() =>
-            _inputService.OnClickFirst -= ClickFirstMouseButton;
+            _inputService.OnClick -= ClickFirstMouseButton;
 
         private void ClickFirstMouseButton()
         {
@@ -49,7 +49,7 @@ namespace CodeBase.Logic
             
             _scoreSpawner.StartAction();
             _playerMovement.StartAction();
-            _inputService.OnClickFirst -= ClickFirstMouseButton;
+            _inputService.OnClick -= ClickFirstMouseButton;
         }
     }
 }

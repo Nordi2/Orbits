@@ -1,16 +1,15 @@
-using System;
-using CodeBase.Logic.PlayerLogic;
+﻿using System;
 using UnityEngine;
 
-namespace CodeBase.Logic.ScoreLogic
+namespace CodeBase.Logic
 {
-    public class TriggerObserver : MonoBehaviour
+    public class TriggerObserver<T> : MonoBehaviour where T : MonoBehaviour
     {
         public event Action TriggerEnter;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out PlayerMovement playerFacade))
+            if (other.TryGetComponent(out T playerFacade))
             {
                 TriggerEnter?.Invoke();
             }

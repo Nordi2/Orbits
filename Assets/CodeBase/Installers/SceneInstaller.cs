@@ -2,6 +2,7 @@ using CodeBase.Logic;
 using CodeBase.Logic.ObstaclLogic;
 using CodeBase.Logic.PlayerLogic;
 using CodeBase.Logic.ScoreLogic;
+using CodeBase.UI.Score;
 using UnityEngine;
 using Zenject;
 
@@ -23,9 +24,9 @@ namespace CodeBase.Installers
             RegisterSpawner();
             RegisterFactory();
             RegisterEffectPool();
+            Container.Bind<ScoreView>().FromComponentInHierarchy().AsSingle();
         }
 
-        #region Register Method
 
         private void RegisterEffectPool() =>
             Container
@@ -54,8 +55,6 @@ namespace CodeBase.Installers
         private void RegisterSpawner() =>
             Container
                 .BindInterfacesAndSelfTo<ScoreSpawner>()
-                .AsCached();
-
-        #endregion
+                .AsSingle();
     }
 }
