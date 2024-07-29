@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CodeBase.Configs.Player;
@@ -7,7 +5,7 @@ using CodeBase.Infrastructure.Service;
 using UnityEngine;
 using Zenject;
 
-namespace CodeBase.Logic.PlayerLogic
+namespace CodeBase.Logic
 {
     public class PlayerMovement : MonoBehaviour, IPauseAction
     {

@@ -1,8 +1,5 @@
 using System;
 using CodeBase.Infrastructure.Service;
-using CodeBase.Logic.ObstaclLogic;
-using CodeBase.Logic.PlayerLogic;
-using CodeBase.Logic.ScoreLogic;
 using JetBrains.Annotations;
 using Zenject;
 

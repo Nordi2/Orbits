@@ -1,6 +1,4 @@
-﻿using CodeBase.Logic.ObstaclLogic;
-
-namespace CodeBase.Logic.PlayerLogic
+﻿namespace CodeBase.Logic
 {
     public class PlayerDeathObserver : TriggerObserver<Obstacle>
     {

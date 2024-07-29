@@ -1,8 +1,7 @@
 ﻿using System;
-using Unity.Mathematics;
 using UnityEngine;
 
-namespace CodeBase.Logic.PlayerLogic
+namespace CodeBase.Logic
 {
     public class PlayerDeath : MonoBehaviour
     {

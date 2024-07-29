@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using Zenject;
 
-namespace CodeBase.Logic.ScoreLogic
+namespace CodeBase.Logic
 {
     public class Score : MonoBehaviour
     {
@@ -11,16 +11,13 @@ namespace CodeBase.Logic.ScoreLogic
 
         private ScoreTriggerObserver _scoreTriggerObserver;
         private ScoreWallet _scoreWallet;
-        private EffectPool _effectPool;
-
 
         public event Action OnScoreCollect;
         public Transform ViewTranform => _viewTransform;
 
         [Inject]
-        public void Construct(ScoreWallet scoreWallet, EffectPool effectPool)
+        public void Construct(ScoreWallet scoreWallet)
         {
-            _effectPool = effectPool;
             _scoreWallet = scoreWallet;
         }
 
@@ -29,22 +26,14 @@ namespace CodeBase.Logic.ScoreLogic
             _scoreTriggerObserver = GetComponentInChildren<ScoreTriggerObserver>();
         }
 
-
         private void OnEnable() =>
             _scoreTriggerObserver.TriggerEnter += ScoreTriggerEnter;
 
         private void OnDisable() =>
             _scoreTriggerObserver.TriggerEnter -= ScoreTriggerEnter;
 
-
         private void ScoreTriggerEnter()
         {
-            if (_effectPool.TryGetEffectInPool(out ParticleSystem effect))
-            {
-                effect.gameObject.SetActive(true);
-                effect.transform.position = _viewTransform.position;
-            }
-
             OnScoreCollect?.Invoke();
             _scoreWallet.AddScore();
         }

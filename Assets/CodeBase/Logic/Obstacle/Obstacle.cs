@@ -2,7 +2,7 @@ using CodeBase.Configs.Obstacle;
 using UnityEngine;
 using Zenject;
 
-namespace CodeBase.Logic.ObstaclLogic
+namespace CodeBase.Logic
 {
     public class Obstacle : MonoBehaviour, IPauseAction
     {

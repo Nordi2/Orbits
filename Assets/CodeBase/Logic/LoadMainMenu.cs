@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using CodeBase.Logic.PlayerLogic;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;

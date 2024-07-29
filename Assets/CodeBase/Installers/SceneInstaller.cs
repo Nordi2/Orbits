@@ -1,7 +1,4 @@
 using CodeBase.Logic;
-using CodeBase.Logic.ObstaclLogic;
-using CodeBase.Logic.PlayerLogic;
-using CodeBase.Logic.ScoreLogic;
 using CodeBase.UI.Score;
 using UnityEngine;
 using Zenject;
@@ -21,7 +18,7 @@ namespace CodeBase.Installers
             RegisterObstacle(_obstacleMiddle);
             RegisterObstacle(_obstacleFar);
 
-            
+
             Container
                 .Bind<IPauseAction>()
                 .To<PlayerMovement>()
@@ -33,8 +30,13 @@ namespace CodeBase.Installers
                 .FromComponentInHierarchy()
                 .AsSingle();
 
+
             Container
-                .BindInterfacesTo<ScoreSpawner>()
+                .BindInterfacesAndSelfTo<ScoreSpawner>()
+                .AsSingle();
+
+            Container
+                .BindInterfacesTo<EffectSpawner>()
                 .AsSingle();
 
             Container

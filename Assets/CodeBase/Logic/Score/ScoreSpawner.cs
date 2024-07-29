@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 using System;
 
-namespace CodeBase.Logic.ScoreLogic
+namespace CodeBase.Logic
 {
     [UsedImplicitly]
     public class ScoreSpawner : IPauseAction, IDisposable
@@ -17,6 +17,9 @@ namespace CodeBase.Logic.ScoreLogic
         private readonly ScoreFactory _scoreFactory;
         private Score _score;
 
+        public event Action SpawnEffect;
+        public Score Score => _score;
+
         public ScoreSpawner(ScoreFactory scoreScoreFactory)
         {
             _scoreFactory = scoreScoreFactory;
@@ -26,13 +29,6 @@ namespace CodeBase.Logic.ScoreLogic
         {
             _score.OnScoreCollect -= SwapPosition;
         }
-
-        private void SpawnScore()
-        {
-            _score = _scoreFactory.Create();
-            _score.OnScoreCollect += SwapPosition;
-        }
-
         public void StopAction() { }
 
         public void StartAction()
@@ -41,8 +37,15 @@ namespace CodeBase.Logic.ScoreLogic
             SwapPosition();
         }
 
+        private void SpawnScore()
+        {
+            _score = _scoreFactory.Create();
+            _score.OnScoreCollect += SwapPosition;
+        }
+
         public void SwapPosition()
         {
+            SpawnEffect?.Invoke();
             _score.ViewTranform.localPosition = GetSpawnPosition();
             _score.transform.rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, MaxRotationAngle) * AngleMultiplier);
         }

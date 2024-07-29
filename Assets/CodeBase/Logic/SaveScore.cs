@@ -1,10 +1,9 @@
 using System;
 using CodeBase.Data;
-using CodeBase.Logic.PlayerLogic;
 using CodeBase.UI.Score;
 using JetBrains.Annotations;
 using Zenject;
-using Services= CodeBase.Infrastructure.Service;
+using Services = CodeBase.Infrastructure.Service;
 
 namespace CodeBase.Logic
 {

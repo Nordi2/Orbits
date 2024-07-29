@@ -1,6 +1,4 @@
-using CodeBase.Logic.PlayerLogic;
-
-namespace CodeBase.Logic.ScoreLogic
+namespace CodeBase.Logic
 {
     public class ScoreTriggerObserver : TriggerObserver<PlayerMovement>
     {
