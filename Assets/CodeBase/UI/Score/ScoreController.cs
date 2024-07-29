@@ -19,16 +19,16 @@ namespace CodeBase.UI.Score
 
         public void Initialize()
         {
-            UpdateCoinView();
-            _scoreWallet.AddScoreEvent += UpdateCoinView;
+            UpdateScoreView();
+            _scoreWallet.AddScoreEvent += UpdateScoreView;
         }
 
         public void Dispose()
         {
-            _scoreWallet.AddScoreEvent -= UpdateCoinView;
+            _scoreWallet.AddScoreEvent -= UpdateScoreView;
         }
 
-        private void UpdateCoinView() =>
+        private void UpdateScoreView() =>
             _scoreView.UpdateScoreView(_scoreWallet.Score);
     }
 }

@@ -13,6 +13,7 @@ namespace CodeBase.UI
         
         private Tween _tween;
         private IInputService _inputService;
+
         [Inject]
         public void Construct(IInputService inputService) =>
             _inputService = inputService;

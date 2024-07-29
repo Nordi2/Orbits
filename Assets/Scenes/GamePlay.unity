@@ -981,6 +981,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionParticle: {fileID: 4065162973123696190, guid: f0959f21fbbd6264bbf722d3c39c92ad, type: 3}
+  _spawnPointParticle: {fileID: 1095352532}
+  _playerDeathObserver: {fileID: 1095352539}
 --- !u!1 &1063679180
 GameObject:
   m_ObjectHideFlags: 0
@@ -7008,7 +7010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 357773682660f694480ca0cc65248203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scorePrefab: {fileID: 2420495836150511094, guid: 295394f1d1d686842b388f835286d4e4, type: 3}
+  _scorePrefab: {fileID: 7854104417849912566, guid: 295394f1d1d686842b388f835286d4e4, type: 3}
   _obstacleFar: {fileID: 1895699488}
   _obstacleMiddle: {fileID: 1380967457}
   _obstacleClose: {fileID: 1342665109}

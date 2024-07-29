@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2131770478886931957}
   - component: {fileID: 7855919085950892968}
-  - component: {fileID: 8645601386321835080}
   - component: {fileID: 5635791728066618850}
   m_Layer: 0
   m_Name: Score
@@ -70,19 +69,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15
---- !u!114 &8645601386321835080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 403650842539467917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 111ec3a13d6dbe04ba6af87e63df8b3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _centerTransform: {fileID: 0}
 --- !u!114 &5635791728066618850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1134083228797728740}
+  - component: {fileID: 7854104417849912566}
   m_Layer: 0
   m_Name: ScoreCenter
   m_TagString: Untagged
@@ -127,6 +114,19 @@ Transform:
   - {fileID: 2131770478886931957}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7854104417849912566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420495836150511094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111ec3a13d6dbe04ba6af87e63df8b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _viewTransform: {fileID: 2131770478886931957}
 --- !u!1 &2769056583268138747
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,11 +26,11 @@ namespace CodeBase.Logic
             _playerFacade.DiePlayer -= LoadMenu;
 
         private void LoadMenu() =>
-            StartCoroutine(Load("MainMenu", _timeExpectation));
+            StartCoroutine(Load("MainMenu"));
 
-        private IEnumerator Load(string nameScene, float time)
+        private IEnumerator Load(string nameScene)
         {
-            yield return new WaitForSeconds(time);
+            yield return new WaitForSeconds(_timeExpectation);
             SceneManager.LoadScene(nameScene);
         }
     }

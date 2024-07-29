@@ -3,7 +3,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using CodeBase.Data;
 using UnityEngine;
 
-namespace Assets.CodeBase.Infrastructure.Service.SaveSystem
+namespace CodeBase.Infrastructure.Service
 {
     public static class SaveProgress
     {
@@ -16,6 +16,5 @@ namespace Assets.CodeBase.Infrastructure.Service.SaveSystem
             formatter.Serialize(stream, data);
             stream.Close();
         }
-
     }
 }

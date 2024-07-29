@@ -11,32 +11,24 @@ namespace CodeBase.Logic
     [UsedImplicitly]
     public class StopActionController : IInitializable, IDisposable
     {
-        private readonly PlayerMovement _playerMovement;
         private readonly IInputService _inputService;
-        private readonly ScoreSpawner _scoreSpawner;
-        private readonly Obstacle[] _obstacles;
+        private readonly IPauseAction[] _pauseActions;
 
         public StopActionController(
-            Obstacle[] obstacles,
-            ScoreSpawner scoreSpawner,
-            PlayerMovement playerMovement,
+            IPauseAction[] pauseActions,
             IInputService inputService)
         {
-            _obstacles = obstacles;
-            _scoreSpawner = scoreSpawner;
+
+            _pauseActions = pauseActions;
             _inputService = inputService;
-            _playerMovement = playerMovement;
         }
 
         void IInitializable.Initialize()
         {
             _inputService.OnClick += ClickFirstMouseButton;
-            _scoreSpawner.StopAction();
 
-            foreach (Obstacle obstacle in _obstacles)
-                obstacle.StopAction();
-
-            _playerMovement.StopAction();
+            foreach (IPauseAction pauseAction in _pauseActions)
+                pauseAction.StopAction();
         }
 
         void IDisposable.Dispose() =>
@@ -44,11 +36,9 @@ namespace CodeBase.Logic
 
         private void ClickFirstMouseButton()
         {
-            foreach (Obstacle obstacle in _obstacles)
-                obstacle.StartAction();
+            foreach (IPauseAction pauseAction in _pauseActions)
+                pauseAction.StartAction();
 
-            _scoreSpawner.StartAction();
-            _playerMovement.StartAction();
             _inputService.OnClick -= ClickFirstMouseButton;
         }
     }

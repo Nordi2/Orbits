@@ -22,7 +22,7 @@ namespace CodeBase.Logic.PlayerLogic
         private float _rotateSpeed;
         private float _currentRadius;
         private float _moveTime;
-        private Coroutine _changeRadiusCoroutine;
+        private bool _isSwapping;
 
         [Inject]
         private void Construct(IInputService inputService, PlayerConfig playerConfig)
@@ -33,7 +33,6 @@ namespace CodeBase.Logic.PlayerLogic
 
         private void Awake()
         {
-            _level = 0;
             _currentRadius = _startRadius;
         }
 
@@ -45,66 +44,52 @@ namespace CodeBase.Logic.PlayerLogic
 
         private void Start()
         {
-            _moveTime = _playerConfig.MoveTime;
+            _moveTime = _playerConfig.SwapTime;
             _rotateSpeed = _playerConfig.Speed;
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             transform.localPosition = Vector3.up * _currentRadius;
-            float rotateValue = _rotateSpeed * Time.fixedDeltaTime * _startRadius / _currentRadius;
+            float rotateValue = _rotateSpeed * Time.deltaTime * _startRadius / _currentRadius;
             _rotateTransform.Rotate(0, 0, rotateValue);
         }
+        public void StopAction() =>
+            GetComponent<PlayerMovement>().enabled = false;
 
+        public void StartAction() =>
+            GetComponent<PlayerMovement>().enabled = true;
 
         private void ClickMouseButton()
         {
-          //  TestMethod();
-             _changeRadiusCoroutine ??= StartCoroutine(ChangeRadius());
+            if (!_isSwapping)
+            {
+                ChangeRadiusAsync();
+            }
         }
 
-        //private async void TestMethod()
-        //{
-        //    float moveStartRadius = _rotateRadius[_level];
-        //    float moveEndRadius = _rotateRadius[(_level + 1) % _rotateRadius.Count];
-        //    float moveOffset = moveEndRadius - moveStartRadius;
-        //    float speed = 1 / _moveTime;
-        //    float timeElasped = 0f;
-        //    while (timeElasped < 1f)
-        //    {
-        //        timeElasped += speed * Time.fixedDeltaTime;
-        //        _currentRadius = moveStartRadius + timeElasped * moveOffset;
-        //        await Task.Delay(TimeSpan.FromMilliseconds((Time.fixedDeltaTime * 0.25f)));
-        //    }
-
-        //    _level = (_level + 1) % _rotateRadius.Count;
-        //    _currentRadius = _rotateRadius[_level];
-
-        //}
-        private IEnumerator ChangeRadius()
+        private async void ChangeRadiusAsync()
         {
             float moveStartRadius = _rotateRadius[_level];
             float moveEndRadius = _rotateRadius[(_level + 1) % _rotateRadius.Count];
             float moveOffset = moveEndRadius - moveStartRadius;
             float speed = 1 / _moveTime;
             float timeElasped = 0f;
+
+            _isSwapping = true;
             while (timeElasped < 1f)
             {
-                timeElasped += speed * Time.fixedDeltaTime;
+                float delta = speed * Time.deltaTime;
+
+                timeElasped += delta;
                 _currentRadius = moveStartRadius + timeElasped * moveOffset;
-                yield return new WaitForFixedUpdate();
+
+                await Task.Yield();
             }
 
             _level = (_level + 1) % _rotateRadius.Count;
             _currentRadius = _rotateRadius[_level];
-
-            _changeRadiusCoroutine = null;
+            _isSwapping = false;
         }
-
-        public void StopAction() =>
-            GetComponent<PlayerMovement>().enabled = false;
-
-        public void StartAction() =>
-            GetComponent<PlayerMovement>().enabled = true;
     }
 }

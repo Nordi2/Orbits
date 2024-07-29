@@ -7,17 +7,10 @@ namespace CodeBase.Logic.PlayerLogic
     public class PlayerDeath : MonoBehaviour
     {
         [SerializeField] private ParticleSystem _explosionParticle;
-
-        private Transform _spawnPointParticle;
-        private PlayerDeathObserver _playerDeathObserver;
+        [SerializeField] private Transform _spawnPointParticle;
+        [SerializeField] private PlayerDeathObserver _playerDeathObserver;
 
         public event Action DiePlayer;
-
-        private void Awake()
-        {
-            _spawnPointParticle = GetComponentInChildren<PlayerMovement>().transform;
-            _playerDeathObserver = GetComponentInChildren<PlayerDeathObserver>();
-        }
 
         private void OnEnable() =>
             _playerDeathObserver.TriggerEnter += CollisionWithAnObstacle;
@@ -28,7 +21,7 @@ namespace CodeBase.Logic.PlayerLogic
         private void CollisionWithAnObstacle()
         {
             DiePlayer?.Invoke();
-            Instantiate(_explosionParticle, _spawnPointParticle.transform.position, quaternion.identity);
+            Instantiate(_explosionParticle, _spawnPointParticle.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

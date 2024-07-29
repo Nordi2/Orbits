@@ -8,6 +8,7 @@ namespace CodeBase.UI.Score
     {
         private int _score;
         public int Score => _score;
+
         public event Action AddScoreEvent;
 
         public void AddScore()

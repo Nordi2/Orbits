@@ -1,11 +1,10 @@
 using System;
-using System.IO;
 using CodeBase.Data;
 using CodeBase.Logic.PlayerLogic;
 using CodeBase.UI.Score;
 using JetBrains.Annotations;
-using UnityEngine;
 using Zenject;
+using Services= CodeBase.Infrastructure.Service;
 
 namespace CodeBase.Logic
 {
@@ -15,6 +14,7 @@ namespace CodeBase.Logic
         private readonly PlayerDeath _playerDeath;
         private readonly ScoreWallet _scoreWallet;
         private readonly PlayerData _playerData;
+
         public SaveScore(PlayerDeath playerdeath, ScoreWallet scoreWallet, PlayerData playerData)
         {
             _playerData = playerData;
@@ -33,7 +33,7 @@ namespace CodeBase.Logic
             if (_playerData.Score < _scoreWallet.Score)
             {
                 _playerData.NewRecord(_scoreWallet.Score);
-                Assets.CodeBase.Infrastructure.Service.SaveSystem.SaveProgress.SaveScore(_playerData);
+                Services.SaveProgress.SaveScore(_playerData);
             }
         }
     }

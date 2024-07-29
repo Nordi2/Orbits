@@ -1,4 +1,5 @@
 using CodeBase.UI.Score;
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -6,31 +7,28 @@ namespace CodeBase.Logic.ScoreLogic
 {
     public class Score : MonoBehaviour
     {
-        [SerializeField] private Transform _centerTransform;
+        [SerializeField] private Transform _viewTransform;
 
         private ScoreTriggerObserver _scoreTriggerObserver;
         private ScoreWallet _scoreWallet;
         private EffectPool _effectPool;
-        private ScoreSpawner _scoreSpawner;
+
+
+        public event Action OnScoreCollect;
+        public Transform ViewTranform => _viewTransform;
 
         [Inject]
-        public void Construct(ScoreWallet scoreWallet, EffectPool effectPool, ScoreSpawner scoreSpawner)
+        public void Construct(ScoreWallet scoreWallet, EffectPool effectPool)
         {
             _effectPool = effectPool;
             _scoreWallet = scoreWallet;
-            _scoreSpawner = scoreSpawner;
         }
 
         private void Awake()
         {
-            _scoreTriggerObserver = GetComponent<ScoreTriggerObserver>();
-            _centerTransform = gameObject.transform.parent;
+            _scoreTriggerObserver = GetComponentInChildren<ScoreTriggerObserver>();
         }
 
-        private void Start()
-        {
-            _scoreSpawner.SwapPosition(_centerTransform, gameObject.transform);
-        }
 
         private void OnEnable() =>
             _scoreTriggerObserver.TriggerEnter += ScoreTriggerEnter;
@@ -44,10 +42,10 @@ namespace CodeBase.Logic.ScoreLogic
             if (_effectPool.TryGetEffectInPool(out ParticleSystem effect))
             {
                 effect.gameObject.SetActive(true);
-                effect.transform.position = transform.position;
+                effect.transform.position = _viewTransform.position;
             }
 
-            _scoreSpawner.SwapPosition(_centerTransform, gameObject.transform);
+            OnScoreCollect?.Invoke();
             _scoreWallet.AddScore();
         }
     }

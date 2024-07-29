@@ -10,21 +10,21 @@ namespace CodeBase.Installers
 {
     public class SceneInstaller : MonoInstaller
     {
-        [SerializeField] private GameObject _scorePrefab;
+        [SerializeField] private Score _scorePrefab;
         [SerializeField] private Obstacle _obstacleFar;
         [SerializeField] private Obstacle _obstacleMiddle;
         [SerializeField] private Obstacle _obstacleClose;
 
-        private PlayerDeath _playerDeath;
-        private PlayerMovement _playerMovement;
         public override void InstallBindings()
         {
             RegisterObstacle(_obstacleClose);
             RegisterObstacle(_obstacleMiddle);
             RegisterObstacle(_obstacleFar);
 
+            
             Container
-                .Bind<PlayerMovement>()
+                .Bind<IPauseAction>()
+                .To<PlayerMovement>()
                 .FromComponentInHierarchy()
                 .AsSingle();
 
@@ -34,7 +34,7 @@ namespace CodeBase.Installers
                 .AsSingle();
 
             Container
-                .BindInterfacesAndSelfTo<ScoreSpawner>()
+                .BindInterfacesTo<ScoreSpawner>()
                 .AsSingle();
 
             Container
@@ -52,9 +52,10 @@ namespace CodeBase.Installers
                 .AsSingle();
         }
 
-        private void RegisterObstacle<T>(T obstacle) where T : IPause =>
+        private void RegisterObstacle<T>(T obstacle) where T : IPauseAction =>
             Container
-                .Bind<T>()
+                .Bind<IPauseAction>()
+                .To<T>()
                 .FromInstance(obstacle)
                 .AsCached();
     }
