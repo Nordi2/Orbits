@@ -982,6 +982,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosionParticle: {fileID: 4065162973123696190, guid: f0959f21fbbd6264bbf722d3c39c92ad, type: 3}
   _spawnPointParticle: {fileID: 1095352532}
+  _startRadius: 0.95
+  _rotateRadius:
+  - 0.95
+  - 1.7
+  - 2.45
+  - 1.7
+  _rotateTransform: {fileID: 1095352532}
 --- !u!1 &1063679180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,9 +1084,6 @@ GameObject:
   - component: {fileID: 1095352532}
   - component: {fileID: 1095352533}
   - component: {fileID: 1095352534}
-  - component: {fileID: 1095352536}
-  - component: {fileID: 1095352537}
-  - component: {fileID: 1095352538}
   - component: {fileID: 1095352539}
   m_Layer: 0
   m_Name: PlayerMovement
@@ -1166,56 +1170,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
---- !u!114 &1095352536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095352531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71552f18b647631458713350c26dca24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _startRadius: 0.95
-  _rotateRadius:
-  - 0.95
-  - 1.7
-  - 2.45
-  - 1.7
-  _rotateTransform: {fileID: 1007608948}
---- !u!114 &1095352537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095352531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers:
-  - {fileID: 1095352538}
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
---- !u!114 &1095352538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095352531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 238ba07d9edf3794a85f4df319fde204, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerConfig: {fileID: 11400000, guid: addfde1043d5cbd45a018d07c7ae9359, type: 2}
 --- !u!114 &1095352539
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 namespace CodeBase.Logic
 {
-    public class ScoreTriggerObserver : TriggerObserver<PlayerMovement>
+    public class ScoreTriggerObserver : TriggerObserver<PlayerDeathObserver>
     {
     }
 }

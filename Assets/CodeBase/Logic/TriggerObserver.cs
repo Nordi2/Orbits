@@ -9,7 +9,7 @@ namespace CodeBase.Logic
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out T playerFacade))
+            if (other.TryGetComponent(out T Object))
             {
                 TriggerEnter?.Invoke();
             }

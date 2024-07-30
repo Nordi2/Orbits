@@ -17,6 +17,10 @@ namespace CodeBase.Configs.Installer
                 .AsSingle();
 
             Container
+                    .BindInterfacesTo<PlayerMovement>()
+                    .AsSingle();
+
+            Container
                 .BindInterfacesTo<StopActionController>()
                 .AsSingle();
 
@@ -39,7 +43,6 @@ namespace CodeBase.Configs.Installer
             Container
                 .BindInterfacesTo<ScoreController>()
                 .AsSingle();
-
         }
     }
 }

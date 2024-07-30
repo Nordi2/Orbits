@@ -20,12 +20,6 @@ namespace CodeBase.Installers
             RegisterObstacle(_obstacleFar);
 
             Container
-                .Bind<IPauseAction>()
-                .To<PlayerMovement>()
-                .FromComponentInHierarchy()
-                .AsSingle();
-
-            Container
                 .BindInterfacesAndSelfTo<ScoreSpawner>()
                 .AsSingle();
 
