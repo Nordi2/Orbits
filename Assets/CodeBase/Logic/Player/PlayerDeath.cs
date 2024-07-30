@@ -1,27 +1,32 @@
-﻿using System;
-using UnityEngine;
+﻿using Assets.CodeBase.Logic.Player;
+using System;
+using Zenject;
 
 namespace CodeBase.Logic
 {
-    public class PlayerDeath : MonoBehaviour
+    public class PlayerDeath : IInitializable, IDisposable
     {
-        [SerializeField] private ParticleSystem _explosionParticle;
-        [SerializeField] private Transform _spawnPointParticle;
-        [SerializeField] private PlayerDeathObserver _playerDeathObserver;
+        private readonly PlayerView _playerView;
+        private readonly PlayerDeathObserver _playerDeathObserver;
 
         public event Action DiePlayer;
 
-        private void OnEnable() =>
+        public PlayerDeath(PlayerDeathObserver playerDeathObserver, PlayerView playerView)
+        {
+            _playerDeathObserver = playerDeathObserver;
+            _playerView = playerView;
+        }
+
+        void IInitializable.Initialize() =>
             _playerDeathObserver.TriggerEnter += CollisionWithAnObstacle;
 
-        private void OnDisable() =>
-            _playerDeathObserver.TriggerEnter += CollisionWithAnObstacle;
+        void IDisposable.Dispose() =>
+            _playerDeathObserver.TriggerEnter -= CollisionWithAnObstacle;
 
         private void CollisionWithAnObstacle()
         {
+            _playerView.SpawnDeathEffect();
             DiePlayer?.Invoke();
-            Instantiate(_explosionParticle, _spawnPointParticle.transform.position, Quaternion.identity);
-            Destroy(gameObject);
         }
     }
 }

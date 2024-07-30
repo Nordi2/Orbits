@@ -1,3 +1,4 @@
+using Assets.CodeBase.Logic.Player;
 using CodeBase.Logic;
 using CodeBase.UI.Score;
 using UnityEngine;
@@ -18,18 +19,11 @@ namespace CodeBase.Installers
             RegisterObstacle(_obstacleMiddle);
             RegisterObstacle(_obstacleFar);
 
-
             Container
                 .Bind<IPauseAction>()
                 .To<PlayerMovement>()
                 .FromComponentInHierarchy()
                 .AsSingle();
-
-            Container
-                .Bind<PlayerDeath>()
-                .FromComponentInHierarchy()
-                .AsSingle();
-
 
             Container
                 .BindInterfacesAndSelfTo<ScoreSpawner>()
@@ -50,6 +44,16 @@ namespace CodeBase.Installers
 
             Container
                 .Bind<ScoreView>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
+            Container
+                .Bind<PlayerView>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
+            Container
+                .Bind<PlayerDeathObserver>()
                 .FromComponentInHierarchy()
                 .AsSingle();
         }

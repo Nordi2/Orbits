@@ -29,12 +29,17 @@ namespace CodeBase.Configs.Installer
                 .AsSingle();
 
             Container
+                .BindInterfacesAndSelfTo<PlayerDeath>()
+                .AsSingle();
+
+            Container
                 .BindInterfacesTo<SaveScore>()
                 .AsSingle();
 
             Container
                 .BindInterfacesTo<ScoreController>()
                 .AsSingle();
+
         }
     }
 }
