@@ -1,3 +1,4 @@
+using CodeBase.Configs.Obstacle;
 using CodeBase.Configs.Player;
 using UnityEngine;
 using Zenject;
