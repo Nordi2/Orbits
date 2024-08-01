@@ -12,20 +12,14 @@ namespace CodeBase.Configs.Installer
     {
         public override void InstallBindings()
         {
+            BindInterfaces<PlayerMovement>();
+            BindInterfaces<StopActionController>();
+            BindInterfaces<InputService>();
+            BindInterfaces<SaveScore>();
+            BindInterfaces<ScoreController>();
+
             Container
                 .Bind<PlayerData>()
-                .AsSingle();
-
-            Container
-                    .BindInterfacesTo<PlayerMovement>()
-                    .AsSingle();
-
-            Container
-                .BindInterfacesTo<StopActionController>()
-                .AsSingle();
-
-            Container
-                .BindInterfacesTo<InputService>()
                 .AsSingle();
 
             Container
@@ -35,13 +29,12 @@ namespace CodeBase.Configs.Installer
             Container
                 .BindInterfacesAndSelfTo<PlayerDeath>()
                 .AsSingle();
+        }
 
+        public void BindInterfaces<T>()
+        {
             Container
-                .BindInterfacesTo<SaveScore>()
-                .AsSingle();
-
-            Container
-                .BindInterfacesTo<ScoreController>()
+                .BindInterfacesTo<T>()
                 .AsSingle();
         }
     }

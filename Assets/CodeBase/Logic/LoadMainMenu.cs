@@ -10,6 +10,7 @@ namespace CodeBase.Logic
     public class LoadMainMenu : MonoBehaviour
     {
         [SerializeField] private float _timeExpectation;
+
         private PlayerDeath _playerFacade;
 
         [Inject]

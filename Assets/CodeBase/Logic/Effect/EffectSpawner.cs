@@ -25,6 +25,7 @@ public class EffectSpawner : IDisposable, IPauseAction
     }
 
     public void StopAction() { }
+
     private void SpawnEffect()
     {
         if (_effectPool.TryGetEffectInPool(out ParticleSystem effect))

@@ -1,5 +1,4 @@
-﻿using CodeBase.Logic;
-using CodeBase.UI.MainMenu;
+﻿using CodeBase.UI.MainMenu;
 using CodeBase.UI.Score;
 using UnityEngine;
 using UnityEngine.UI;

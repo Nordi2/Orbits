@@ -7,26 +7,23 @@ namespace CodeBase.UI.Score
     [UsedImplicitly]
     public class ScoreController : IInitializable, IDisposable
     {
-        private ScoreWallet _scoreWallet;
-        private ScoreView _scoreView;
+        private readonly ScoreWallet _scoreWallet;
+        private readonly ScoreView _scoreView;
 
-        [Inject]
-        private void Construct(ScoreWallet scoreWallet, ScoreView scoreView)
+        public ScoreController(ScoreView scoreView, ScoreWallet scoreWallet)
         {
             _scoreView = scoreView;
             _scoreWallet = scoreWallet;
         }
 
-        public void Initialize()
+        void IInitializable.Initialize()
         {
             UpdateScoreView();
             _scoreWallet.AddScoreEvent += UpdateScoreView;
         }
 
-        public void Dispose()
-        {
+        void IDisposable.Dispose() =>
             _scoreWallet.AddScoreEvent -= UpdateScoreView;
-        }
 
         private void UpdateScoreView() =>
             _scoreView.UpdateScoreView(_scoreWallet.Score);

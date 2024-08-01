@@ -11,11 +11,8 @@ namespace CodeBase.Logic
         private readonly IInputService _inputService;
         private readonly IPauseAction[] _pauseActions;
 
-        public StopActionController(
-            IPauseAction[] pauseActions,
-            IInputService inputService)
+        public StopActionController(IPauseAction[] pauseActions, IInputService inputService)
         {
-
             _pauseActions = pauseActions;
             _inputService = inputService;
         }

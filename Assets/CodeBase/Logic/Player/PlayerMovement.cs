@@ -35,6 +35,7 @@ namespace CodeBase.Logic
             _rotateSpeed = _playerConfig.Speed;
             _inputService.OnClick += ClickMouseButton;
         }
+
         public void Dispose()
         {
             _inputService.OnClick -= ClickMouseButton;

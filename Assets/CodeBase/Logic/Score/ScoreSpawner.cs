@@ -25,10 +25,11 @@ namespace CodeBase.Logic
             _scoreFactory = scoreScoreFactory;
         }
 
-        public void Dispose()
+        void IDisposable.Dispose()
         {
             _score.OnScoreCollect -= SwapPosition;
         }
+
         public void StopAction() { }
 
         public void StartAction()
