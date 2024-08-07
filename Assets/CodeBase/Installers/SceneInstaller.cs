@@ -19,17 +19,17 @@ namespace CodeBase.Installers
             RegisterObstacle(_obstacleMiddle);
             RegisterObstacle(_obstacleFar);
 
-            BindFromInHierarchy<EffectPool>();
-            BindFromInHierarchy<ScoreView>();
-            BindFromInHierarchy<PlayerView>();
-            BindFromInHierarchy<PlayerDeathObserver>();
+            BindInHierarchy<EffectPool>();
+            BindInHierarchy<ScoreView>();
+            BindInHierarchy<PlayerView>();
+            BindInHierarchy<PlayerDeathObserver>();
 
             Container
                 .BindInterfacesAndSelfTo<ScoreSpawner>()
                 .AsSingle();
 
             Container
-                .BindInterfacesTo<EffectSpawner>()
+                .BindInterfacesTo<ScoreEffectSpawner>()
                 .AsSingle();
 
             Container
@@ -37,16 +37,16 @@ namespace CodeBase.Installers
                 .FromComponentInNewPrefab(_scorePrefab);
         }
 
-        private void RegisterObstacle<T>(T obstacle) where T : IPauseAction =>
+        private void RegisterObstacle<TImplementation>(TImplementation obstacle) where TImplementation : IPauseAction =>
             Container
                 .Bind<IPauseAction>()
-                .To<T>()
+                .To<TImplementation>()
                 .FromInstance(obstacle)
                 .AsCached();
 
-        private void BindFromInHierarchy<T>() where T : MonoBehaviour =>
+        private void BindInHierarchy<TImplementation>() where TImplementation : MonoBehaviour =>
             Container
-                .Bind<T>()
+                .Bind<TImplementation>()
                 .FromComponentInHierarchy()
                 .AsSingle();
     }

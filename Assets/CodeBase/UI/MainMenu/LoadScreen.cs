@@ -7,6 +7,8 @@ namespace CodeBase.UI.MainMenu
 {
     public class LoadScreen : MonoBehaviour
     {
+        private const float YieldSeconds = 2.2f;
+
         [SerializeField] private Slider _scale;
 
         public void Loading(string sceneName)
@@ -26,7 +28,7 @@ namespace CodeBase.UI.MainMenu
 
                 if (loadAsync.progress >= 0.9f && !loadAsync.allowSceneActivation)
                 {
-                    yield return new WaitForSeconds(2.2f);
+                    yield return new WaitForSeconds(YieldSeconds);
                     loadAsync.allowSceneActivation = true;
                 }
 

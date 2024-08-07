@@ -10,7 +10,7 @@ namespace CodeBase.Infrastructure.Service
     {
         public event Action OnClick;
 
-        public void Tick()
+        void ITickable.Tick()
         {
 #if (UNITY_ANDROID || Unity_IOS) && !UNITY_EDITOR
             MobileInput();

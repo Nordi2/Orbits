@@ -3,11 +3,13 @@ using System.Threading.Tasks;
 using Assets.CodeBase.Logic.Player;
 using CodeBase.Configs.Player;
 using CodeBase.Infrastructure.Service;
+using JetBrains.Annotations;
 using UnityEngine;
 using Zenject;
 
 namespace CodeBase.Logic
 {
+    [UsedImplicitly]
     public class PlayerMovement : ITickable, IInitializable, IDisposable, IPauseAction
     {
         private readonly IInputService _inputService;
@@ -32,20 +34,17 @@ namespace CodeBase.Logic
             _inputService.OnClick += ClickMouseButton;
         }
 
-        void IDisposable.Dispose()
-        {
+        void IDisposable.Dispose() =>
             _inputService.OnClick -= ClickMouseButton;
-        }
 
         void ITickable.Tick()
         {
             if (_isPause)
                 return;
 
-            _playerView.RotateTransform.localPosition = Vector3.up * _currentRadius;
-            float rotateValue = _playerConfig.Speed * Time.deltaTime * _playerView.StartRadius / _currentRadius;
-            _playerView.transform.Rotate(0, 0, rotateValue);
+            Move();
         }
+
 
         public void StopAction() =>
             _isPause = true;
@@ -53,13 +52,19 @@ namespace CodeBase.Logic
         public void StartAction() =>
             _isPause = false;
 
+        private void Move()
+        {
+            _playerView.RotateTransform.localPosition = Vector3.up * _currentRadius;
+            float rotateValue = _playerConfig.Speed * Time.deltaTime * _playerView.StartRadius / _currentRadius;
+            _playerView.transform.Rotate(0, 0, rotateValue);
+        }
+
         private void ClickMouseButton()
         {
-            if (_isPause)
+            if (_isPause || _isSwapping)
                 return;
 
-            if (!_isSwapping)
-                ChangeRadiusAsync();
+            ChangeRadiusAsync();
         }
 
         private async void ChangeRadiusAsync()
@@ -85,6 +90,5 @@ namespace CodeBase.Logic
             _currentRadius = _playerView.RotateRadii[_level];
             _isSwapping = false;
         }
-
     }
 }

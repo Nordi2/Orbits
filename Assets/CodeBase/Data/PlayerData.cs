@@ -1,6 +1,4 @@
-﻿using CodeBase.UI.Score;
-
-namespace CodeBase.Data
+﻿namespace CodeBase.Data
 {
     [System.Serializable]
     public class PlayerData
@@ -8,9 +6,7 @@ namespace CodeBase.Data
         private int _score;
         public int Score => _score;
 
-        public void NewRecord(int score)
-        {
+        public void NewRecord(int score) =>
             _score = score;
-        }
     }
 }

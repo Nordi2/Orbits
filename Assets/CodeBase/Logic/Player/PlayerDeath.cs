@@ -1,9 +1,11 @@
 ﻿using Assets.CodeBase.Logic.Player;
+using JetBrains.Annotations;
 using System;
 using Zenject;
 
 namespace CodeBase.Logic
 {
+    [UsedImplicitly]
     public class PlayerDeath : IInitializable, IDisposable
     {
         private readonly PlayerView _playerView;

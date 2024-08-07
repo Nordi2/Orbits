@@ -17,18 +17,15 @@ namespace CodeBase.Logic
         private readonly ScoreFactory _scoreFactory;
         private Score _score;
 
-        public event Action SpawnEffect;
-        public Score Score => _score;
+        public event Action<Vector3> OnScoreCollect;
 
         public ScoreSpawner(ScoreFactory scoreScoreFactory)
         {
             _scoreFactory = scoreScoreFactory;
         }
 
-        void IDisposable.Dispose()
-        {
-            _score.OnScoreCollect -= SwapPosition;
-        }
+        void IDisposable.Dispose() =>
+            _score.OnScoreCollect -= ScoreCollectHandler;
 
         public void StopAction() { }
 
@@ -41,12 +38,16 @@ namespace CodeBase.Logic
         private void SpawnScore()
         {
             _score = _scoreFactory.Create();
-            _score.OnScoreCollect += SwapPosition;
+            _score.OnScoreCollect += ScoreCollectHandler;
         }
 
-        public void SwapPosition()
+        private void ScoreCollectHandler()
         {
-            SpawnEffect?.Invoke();
+            OnScoreCollect?.Invoke(_score.ViewTranform.position);
+            SwapPosition();
+        }
+        private void SwapPosition()
+        {
             _score.ViewTranform.localPosition = GetSpawnPosition();
             _score.transform.rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, MaxRotationAngle) * AngleMultiplier);
         }

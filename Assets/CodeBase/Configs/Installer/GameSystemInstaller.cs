@@ -31,11 +31,9 @@ namespace CodeBase.Configs.Installer
                 .AsSingle();
         }
 
-        public void BindInterfaces<T>()
-        {
+        public void BindInterfaces<TImplementation>() =>
             Container
-                .BindInterfacesTo<T>()
+                .BindInterfacesTo<TImplementation>()
                 .AsSingle();
-        }
     }
 }

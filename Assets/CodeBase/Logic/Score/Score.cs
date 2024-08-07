@@ -21,10 +21,8 @@ namespace CodeBase.Logic
             _scoreWallet = scoreWallet;
         }
 
-        private void Awake()
-        {
+        private void Awake() =>
             _scoreTriggerObserver = GetComponentInChildren<ScoreTriggerObserver>();
-        }
 
         private void OnEnable() =>
             _scoreTriggerObserver.TriggerEnter += ScoreTriggerEnter;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace CodeBase.Configs.Player
 {
-    [CreateAssetMenu(fileName = "Player", menuName = "ScritableObjects/PlayerConfig", order = 1)]
+    [CreateAssetMenu(fileName = "Player", menuName = "ScritableObjects/PlayerConfig")]
     public class PlayerConfig : ScriptableObject
     {
         [Range(0, 360)][SerializeField] private float _speed;

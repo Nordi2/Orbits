@@ -11,19 +11,19 @@ namespace CodeBase.Logic
     {
         [SerializeField] private float _timeExpectation;
 
-        private PlayerDeath _playerFacade;
+        private PlayerDeath _playerDeath;
 
         [Inject]
-        public void Construct(PlayerDeath playerFacade)
+        public void Construct(PlayerDeath playerDeath)
         {
-            _playerFacade = playerFacade;
+            _playerDeath = playerDeath;
         }
 
         private void OnEnable() =>
-            _playerFacade.DiePlayer += LoadMenu;
+            _playerDeath.DiePlayer += LoadMenu;
 
         private void OnDisable() =>
-            _playerFacade.DiePlayer -= LoadMenu;
+            _playerDeath.DiePlayer -= LoadMenu;
 
         private void LoadMenu() =>
             StartCoroutine(Load("MainMenu"));
