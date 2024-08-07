@@ -30,7 +30,7 @@ namespace CodeBase.Logic
 
         public void Initialize()
         {
-            _currentRadius = _playerView.StartRadiys;
+            _currentRadius = _playerView.StartRadius;
             _moveTime = _playerConfig.SwapTime;
             _rotateSpeed = _playerConfig.Speed;
             _inputService.OnClick += ClickMouseButton;
@@ -46,7 +46,7 @@ namespace CodeBase.Logic
             if (_isPause)
             {
                 _playerView.RotateTransform.localPosition = Vector3.up * _currentRadius;
-                float rotateValue = _rotateSpeed * Time.deltaTime * _playerView.StartRadiys / _currentRadius;
+                float rotateValue = _rotateSpeed * Time.deltaTime * _playerView.StartRadius / _currentRadius;
                 _playerView.transform.Rotate(0, 0, rotateValue);
             }
         }
@@ -70,8 +70,8 @@ namespace CodeBase.Logic
 
         private async void ChangeRadiusAsync()
         {
-            float moveStartRadius = _playerView.RotateRadius[_level];
-            float moveEndRadius = _playerView.RotateRadius[(_level + 1) % _playerView.RotateRadius.Count];
+            float moveStartRadius = _playerView.RotateRadii[_level];
+            float moveEndRadius = _playerView.RotateRadii[(_level + 1) % _playerView.RotateRadii.Count];
             float moveOffset = moveEndRadius - moveStartRadius;
             float speed = 1 / _moveTime;
             float timeElasped = 0f;
@@ -87,8 +87,8 @@ namespace CodeBase.Logic
                 await Task.Yield();
             }
 
-            _level = (_level + 1) % _playerView.RotateRadius.Count;
-            _currentRadius = _playerView.RotateRadius[_level];
+            _level = (_level + 1) % _playerView.RotateRadii.Count;
+            _currentRadius = _playerView.RotateRadii[_level];
             _isSwapping = false;
         }
 

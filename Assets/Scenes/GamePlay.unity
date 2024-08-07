@@ -983,7 +983,7 @@ MonoBehaviour:
   _explosionParticle: {fileID: 4065162973123696190, guid: f0959f21fbbd6264bbf722d3c39c92ad, type: 3}
   _spawnPointParticle: {fileID: 1095352532}
   _startRadius: 0.95
-  _rotateRadius:
+  _rotateRadii:
   - 0.95
   - 1.7
   - 2.45

@@ -25,7 +25,7 @@ namespace CodeBase.Logic
 
         private void CollisionWithAnObstacle()
         {
-            _playerView.SpawnDeathEffect();
+            _playerView.PlayDeathEffect();
             DiePlayer?.Invoke();
         }
     }
