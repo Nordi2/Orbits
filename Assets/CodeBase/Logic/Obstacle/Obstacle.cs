@@ -22,10 +22,10 @@ namespace CodeBase.Logic
             MoveObstacle(_obstacleConfig.Speed);
 
         public void StartAction() =>
-            GetComponent<Obstacle>().enabled = true;
+            enabled = true;
 
         public void StopAction() =>
-            GetComponent<Obstacle>().enabled = false;
+            enabled = false;
 
         private void MoveObstacle(float rotateSpeed) =>
            _centalPoint.Rotate(0, 0, rotateSpeed * Time.fixedDeltaTime);
