@@ -13,15 +13,17 @@
 ## Screenshots
 
 <details><summary>MainMenu</summary>
-
-<div style="display: flex; gap: 10px; flex-wrap: wrap;">
-  <img src="https://i.ibb.co/HD34W36J/MainMenu.png" alt="MainMenu" style="width: 256px;">
-</div>
+      
+![MainMenu](https://github.com/user-attachments/assets/d4506b8b-0f91-45dd-bf93-33a359f70ce8)
 
 </details>
 
 <details><summary>Gameplay</summary>
       
+![Gameplay_1](https://github.com/user-attachments/assets/3b08d75e-d2e0-43f5-8af8-4fff8b14ebc6)
+![Gameplay_2](https://github.com/user-attachments/assets/b9b14c5e-7f55-4348-8a0a-a1dae72cc444)
+![Gameplay_4](https://github.com/user-attachments/assets/8af1e367-dec7-4e0d-bea5-1c902f668653)
+
 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
   <img src="https://i.ibb.co/d0JWsjZ5/Gameplay-1.png" alt="Screnshot1" style="width: 256px;">
   <img src="https://i.ibb.co/2Y81Fs5G/Gameplay-2.png" alt="Screnshot2" style="width: 256px;">
