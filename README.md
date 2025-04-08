@@ -32,9 +32,9 @@
 
 ## Gameplay
 
-![Movie_004](https://github.com/user-attachments/assets/f3e68fd6-d9fd-4f55-92dd-28f1083a04c2)
-
-![Movie_003](https://github.com/user-attachments/assets/99f91307-5e3b-4a6d-aa2a-d1bd16b27cb2)
+<p align = "center">  
+<img src="https://github.com/user-attachments/assets/99f91307-5e3b-4a6d-aa2a-d1bd16b27cb2" alt="Movie_003" width="600">
+</p>
 
 ## Reference
 
