@@ -33,7 +33,7 @@
 ## Gameplay
 
 <p align="center">
-      <img src="https://i.ibb.co/r2VhJMSR/Movie-003.gif" alt="Gameplay_gif_" width="400">
+      <img src="https://i.ibb.co/r2VhJMSR/Movie-003.gif" alt="Movie-003" border="0">
 </p>
 
 ## Reference
