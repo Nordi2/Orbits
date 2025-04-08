@@ -30,7 +30,7 @@
 
 ## Gameplay
 
-<p align = "center">  
+<p align = "left">  
 <img src="https://github.com/user-attachments/assets/99f91307-5e3b-4a6d-aa2a-d1bd16b27cb2" alt="Movie_003" width="720">
 </p>
 
