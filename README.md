@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Unity-2022.3.29f1-yellow?style=plastic&logo=Unity&logoColor=purple&logoSize=auto&labelColor=black">
+    <img src="https://img.shields.io/badge/Unity-2022.3.29f1-purple?style=plastic&logo=Unity&logoColor=purple&logoSize=auto&labelColor=black">
 </p>
 
 ## Input
@@ -38,4 +38,4 @@
 
 ## Reference
 
-[![Èãðàòü íà itch.io](https://img.shields.io/badge/Ithc_io-play_now-yellow?style=plastic&logo=Itch.io&logoColor=purple&logoSize=auto&label=Itch.io&labelColor=black)](https://igorchek.itch.io/orbits)
+[![Èãðàòü íà itch.io](https://img.shields.io/badge/Ithc_io-play_now-purple?style=plastic&logo=Itch.io&logoColor=purple&logoSize=auto&label=Itch.io&labelColor=black)](https://igorchek.itch.io/orbits)
