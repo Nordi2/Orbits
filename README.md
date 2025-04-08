@@ -32,12 +32,10 @@
 
 ## Gameplay
 
-<p align="center">
-      <img src="https://i.ibb.co/r2VhJMSR/Movie-003.gif" alt="Movie-003" border="0">
-</p>
+<![Movie_003](https://github.com/user-attachments/assets/99f91307-5e3b-4a6d-aa2a-d1bd16b27cb2) width="400">
 
 ## Reference
 
-![Movie_003](https://github.com/user-attachments/assets/99f91307-5e3b-4a6d-aa2a-d1bd16b27cb2)
+
 
 [![Èãðàòü íà itch.io](https://img.shields.io/badge/Ithc_io-play_now-purple?style=plastic&logo=Itch.io&logoColor=purple&logoSize=auto&label=Itch.io&labelColor=black)](https://igorchek.itch.io/orbits)
