@@ -14,22 +14,16 @@
 
 <details><summary>MainMenu</summary>
       
-![MainMenu](https://github.com/user-attachments/assets/d4506b8b-0f91-45dd-bf93-33a359f70ce8)
+<img src ="https://github.com/user-attachments/assets/d4506b8b-0f91-45dd-bf93-33a359f70ce8" alt ="MainMenu" style="width: 256px;"
 
 </details>
 
 <details><summary>Gameplay</summary>
 
-<div style="display: flex"; gap: 10px; flex-wrap: wrap;">   
+<div style="display: flex"; gap: 25px; flex-wrap: wrap;">   
       <img src="https://github.com/user-attachments/assets/3b08d75e-d2e0-43f5-8af8-4fff8b14ebc6" alt="Screnshot1" style="width: 256px;">
       <img src="https://github.com/user-attachments/assets/b9b14c5e-7f55-4348-8a0a-a1dae72cc444" alt="Screnshot2" style="width: 256px;">
       <img src="https://github.com/user-attachments/assets/8af1e367-dec7-4e0d-bea5-1c902f668653" alt="Screnshot3" style="width: 256px;">
-</div>
-
-<div style="display: flex; gap: 10px; flex-wrap: wrap;">
-  <img src="https://i.ibb.co/d0JWsjZ5/Gameplay-1.png" alt="Screnshot1" style="width: 256px;">
-  <img src="https://i.ibb.co/2Y81Fs5G/Gameplay-2.png" alt="Screnshot2" style="width: 256px;">
-  <img src="https://i.ibb.co/mFX7NmtN/Gameplay-4.png" alt="Screnshot3" style="width: 256px;">
 </div>
 
 </details>
