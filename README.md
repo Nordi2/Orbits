@@ -13,8 +13,9 @@
 ## Screenshots
 
 <details><summary>MainMenu</summary>
-      
-<img src ="https://github.com/user-attachments/assets/d4506b8b-0f91-45dd-bf93-33a359f70ce8" alt ="MainMenu" style="width: 256px;"
+      ![MainMenu](https://github.com/user-attachments/assets/eedc4761-f29c-4753-b1ed-b621dd056038)
+
+<img src="https://github.com/user-attachments/assets/eedc4761-f29c-4753-b1ed-b621dd056038" alt="MainMenu" style="width: 256px;">
 
 </details>
 
