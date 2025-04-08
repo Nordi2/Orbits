@@ -13,7 +13,6 @@
 ## Screenshots
 
 <details><summary>MainMenu</summary>
-      ![MainMenu](https://github.com/user-attachments/assets/eedc4761-f29c-4753-b1ed-b621dd056038)
 
 <img src="https://github.com/user-attachments/assets/eedc4761-f29c-4753-b1ed-b621dd056038" alt="MainMenu" style="width: 256px;">
 
